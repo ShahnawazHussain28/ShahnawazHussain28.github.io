@@ -1,17 +1,8 @@
-<?php 
-
-$current_data = file_get_contents('websitedata.json');
-$array_data = json_decode($current_data, true);
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Some Cool Stuff</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script data-ad-client="ca-pub-1909333473551705" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style type="text/css">
 		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
@@ -258,18 +249,28 @@ $array_data = json_decode($current_data, true);
 	<section class="sec about" id="content">
 		<?php  
 
-		foreach ($array_data as $key) {
-			echo "<div class='services' onclick=\"window.location.href ='" . $key['onclick'] . "' \">";
-			echo "<div class='box'>";
-			echo "<div class='iconbox'>";
-			echo "<img src='" . $key['image'] . "'>";
-			echo "</div><div class='content'>";
-			echo "<h2>" . $key['title'] . "</h2>";
-			echo "<p>" . $key['description'] . "</p>";
-			echo "</div></div></div>";
-		}
+// 		foreach ($array_data as $key) {
+// 			echo "<div class='services' onclick=\"window.location.href ='" . $key['onclick'] . "' \">";
+// 			echo "<div class='box'>";
+// 			echo "<div class='iconbox'>";
+// 			echo "<img src='" . $key['image'] . "'>";
+// 			echo "</div><div class='content'>";
+// 			echo "<h2>" . $key['title'] . "</h2>";
+// 			echo "<p>" . $key['description'] . "</p>";
+// 			echo "</div></div></div>";
+// 		}
 
-		?>
+// 		?>
+		<div class='services' onclick="window.location.href ='numbergameai'">
+			<div class='box'>
+				<div class='iconbox'>
+					<img src='thumbnails/ai.jpg'>
+					</div><div class='content'>
+					<h2>Number Game AI</h2>
+					<p>Check Out if a Computer can guess your number!</p>
+				</div>
+			</div>
+		</div>
 	</section>
 	<!-- About -->
 	<section class="sec" id="about">
@@ -300,10 +301,6 @@ $array_data = json_decode($current_data, true);
 		var header = document.querySelector("header");
 		header.classList.toggle("active");
 	}
-    window.onload = () => {
-        let bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
-        bannerNode.parentNode.removeChild(bannerNode);
-    }
 </script>
 </body>
 </html>

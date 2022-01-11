@@ -1,0 +1,128 @@
+[
+    {
+        "title": "Number Game AI",
+        "description": "Check Out if a Computer can guess your number!",
+        "image": "thumbnails\/ai.jpg",
+        "onclick": "numbergameai",
+        "genre": "game"
+    },
+    {
+        "title": "Magic Calculator",
+        "description": "Learn a new Magic with this calculator",
+        "image": "thumbnails\/magiccalc.jpg",
+        "onclick": "magiccalc",
+        "genre": "creative"
+    },
+    {
+        "title": "Real PDF Book",
+        "description": "See how a pdf should look as a functional book",
+        "image": "thumbnails\/pdfbook.jpg",
+        "onclick": "pdfbook",
+        "genre": "creative"
+    },
+    {
+        "title": "Tic-Tac-Toe",
+        "description": "Play this nostalgic game with AI pattern detection",
+        "image": "thumbnails\/tictactoe.jpg",
+        "onclick": "tictactoe",
+        "genre": "game"
+    },
+    {
+        "title": "Asteroids",
+        "description": "Destroy the asteroids with laser beam and help the space ship survive",
+        "image": "thumbnails\/asteroids.jpg",
+        "onclick": "asteroids",
+        "genre": "game"
+    },
+    {
+        "title": "Stack-Blocks",
+        "description": "A full 3D game without installing. Let's see how high you can get upto",
+        "image": "thumbnails\/stackblocks.jpg",
+        "onclick": "stackblocks",
+        "genre": "game"
+    },
+    {
+        "title": "Cutie Boom",
+        "description": "Who is bad, who is good? Let's find out. Download this game now.",
+        "image": "thumbnails\/cutieboom.jpg",
+        "onclick": "cutieboom",
+        "genre": "game"
+    },
+    {
+        "title": "Dino Game",
+        "description": "Play this classical Chrome dino game in this website",
+        "image": "thumbnails\/dino.jpg",
+        "onclick": "dinogame",
+        "genre": "game"
+    },
+    {
+        "title": "Flappy Plane",
+        "description": "Don't let the plane crash between buildings",
+        "image": "thumbnails\/flappybird.jpg",
+        "onclick": "flappyplane",
+        "genre": "game"
+    },
+    {
+        "title": "Tetris",
+        "description": "Tried to create it. But it is still under developement",
+        "image": "thumbnails\/tetris.jpg",
+        "onclick": "tetris",
+        "genre": "game"
+    },
+    {
+        "title": "Ghost Camera",
+        "description": "Like those hazy camera effect used for ghosts? Try yourself in real time",
+        "image": "thumbnails\/ghostcam.jpg",
+        "onclick": "ghostcam",
+        "genre": "camera"
+    },
+    {
+        "title": "ASCII Camera",
+        "description": "Represent yourself in numbers and letters. Only works with Monospace",
+        "image": "thumbnails\/asciicam.jpg",
+        "onclick": "asciicam",
+        "genre": "camera"
+    },
+    {
+        "title": "Box Camera",
+        "description": "Like Minecraft? See yourself with the least quality, only boxes",
+        "image": "thumbnails\/boxmirror.jpg",
+        "onclick": "boxcam",
+        "genre": "camera"
+    },
+    {
+        "title": "Game Of Life",
+        "description": "Defined by only 3 simple rules but playing with this is FUN.",
+        "image": "thumbnails\/gameoflife.png",
+        "onclick": "gameoflife",
+        "genre": "game"
+    },
+    {
+        "title": "Fractal Tree",
+        "description": "A completely symmetric tree you want to look at. Can be asymmetric too.",
+        "image": "thumbnails\/fractaltree.jpg",
+        "onclick": "fractaltree",
+        "genre": "creative"
+    },
+    {
+        "title": "Decode Pattern",
+        "description": "Do you think you are master of Pattern lock?  Play this.",
+        "image": "thumbnails\/decodepattern.jpg",
+        "onclick": "decodepattern",
+        "genre": "game"
+    },
+    {
+        "title": "Digital Fireworks",
+        "description": "Let's launch some fireworks and watch them even if its not an occation",
+        "image": "thumbnails\/fireworks.jpg",
+        "onclick": "fireworks",
+        "genre": "satisfying"
+    },
+    {
+        "title": "ShanLab",
+        "description": "Tired of doing matrix problems. Here is the solution. Not MatLab its ShanLab",
+        "image": "thumbnails\/matrixsolver.jpg",
+        "onclick": "matrixsolver",
+        "genre": "tool"
+    }
+]

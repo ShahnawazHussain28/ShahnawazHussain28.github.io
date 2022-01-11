@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tic-Tac-Toe</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+	*{
+		user-select: none;
+		font-family: "Poppins", sans-serif;
+	}
+	body{
+		background-color: rgb(40, 48, 71);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		width: 100vw;
+		margin: 0;
+		padding: 0;
+	}
+	#container{
+		box-sizing: border-box;
+		padding: 10px;
+		display: grid;
+		align-items: center;
+		justify-content: center;
+		max-height: 100vh;
+	}
+	#onlinemode, #aimode, #offlinemode{
+		margin: 10px;
+		border-radius: 20px;
+		background-image: linear-gradient(110deg, transparent 40%, rgba(255,255,255,.5) 50%);
+		box-shadow: 0 0 15px rgba(103, 124, 219, 0.678);
+	}
+	#onlinemode{
+		background-color: darkviolet;
+	}
+	#aimode{
+		background-color: darkslateblue;
+	}
+	#offlinemode{
+		background-color: indigo;
+	}
+	.icons{
+		margin: 10px;
+		display: grid;
+		grid-auto-flow: column;
+		justify-items: center;
+		align-items: center;
+		padding: 10px;
+	}
+	.fa{
+		color: white;
+		font-size: 42px;
+		padding: 5px;
+	}
+	.modename{
+		margin: 10px 0px 0px 0px;
+		color: white;
+		background-color: rgb(15, 28, 44);
+		width: 100%;
+		text-align: center;
+		padding: 10px;
+		font-size: 26px;
+		box-sizing: border-box;
+		border-radius: 0px 0px 15px 15px;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="onlinemode" onclick="onlineMode()">
+			<div class="icons">
+				<i class="fa fa-user"></i>
+				<i class="fa fa-globe"></i>
+				<i class="fa fa-user"></i>
+			</div>
+			<div class="modename">Online Duo</div>
+		</div>
+		<div id="aimode" onclick="aiMode()">
+			<div class="icons">
+				<i class="fa fa-user"></i>
+				<i class="fa fa-laptop"></i>
+			</div>
+			<div class="modename">AI Mode</div>
+		</div>
+		<div id="offlinemode" onclick="offlineMode()">
+			<div class="icons">
+				<i class="fa fa-user"></i>
+				<i class="fa fa-handshake-o"></i>
+				<i class="fa fa-user"></i>
+			</div>
+			<div class="modename">Offline Duo</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	function onlineMode() {
+		window.location.href = "https://shan-tictactoe.glitch.me";
+	}
+	function aiMode() {
+		window.location.href = window.location.href + "ai";
+	}
+	function offlineMode() {
+		window.location.href = window.location.href + "offline";
+	}
+</script>

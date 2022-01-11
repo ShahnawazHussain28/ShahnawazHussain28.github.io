@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ASCII CAM</title>
+	<script type="text/javascript" src="p5.min.js"></script>
+	<style type="text/css">
+		body{
+			font-family: monospace;	
+			background: #000;
+			color: white;
+			height: 100vh;
+			width: 100vw;
+			margin: 0px;
+			padding: 0px;
+		}
+		#canvas{
+		    width: 100%;
+		    height: 85%;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translate(-50%, 0%);
+			overflow: hidden;
+		}
+		#slider{
+			width: 50vw;
+			max-width: 500px;
+			display: inline-block;
+			float: left;
+			margin: 15px;
+		}
+		#resup, #resdown{
+			border-radius: 50%;
+			border-style: none;	
+			margin: 10px;
+			height: 30px;
+			width: 30px;
+			line-height: 0px;
+			font-size: 32px;
+			font-weight: bold;
+			box-shadow: 0 0 5px black;
+			float: right;
+		}
+		#resdown{
+			margin-right: 35px;
+		}
+		#controls{
+			color: #000;
+			height: 100px;
+			width: 100vw;
+			background: #0ff;
+			position: fixed;
+			bottom: 0px;
+		}
+		#invertfreezebox{
+			width: 100%;
+			background: #ddd;
+			font-size: 1.3em;
+			padding-left: 10px;
+		}
+		#freeze{
+			float: right;
+			font-size: 0.8em;
+			margin: 10px;
+			margin-right: 7%;
+			border: 2px dashed black;
+			border-radius: 5px;
+		}
+		#invert{
+			display: inline-block;
+			margin: 10px;
+		}
+		input[type="checkbox"]{
+			height: 20px;
+			width: 20px;
+		}
+		#resolutionintensitybox{
+			background: #555;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="sketch.js"></script>
+	<div id="controls">
+		<div id="invertfreezebox">
+			Invert
+		</div>
+		<div id="resolutionintensitybox"></div>
+	</div>
+</body>
+</html>

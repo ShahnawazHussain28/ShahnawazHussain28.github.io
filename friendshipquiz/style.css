@@ -1,0 +1,43 @@
+body{
+	background-color: #444;
+}
+
+form{
+	border-radius: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	height: 70vh;
+	width: 85vw;
+	max-width: 400px;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+}
+label{
+	font-family: sans-serif;
+	font-size: 24px;
+	font-weight: bolder;
+}
+
+input{
+	padding: 10px 20px;
+	margin: 10px;
+	background-color: grey;
+	border-style: none;
+	border: 1px solid darkblue;
+	color: white;
+	border-radius: 5px;
+	display: block;
+	font-size: 20px;
+	text-align: center;
+}
+input[name = 'name']{
+	background-color: #eee;
+}
+::placeholder{
+	color: #999;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Asteroids</title>
+	<script type="text/javascript" src="p5.min.js"></script>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			background-color: rgb(51, 51, 51);
+		}
+		canvas{
+			border: 1px solid white;
+			box-sizing: border-box;
+		}
+		#pausebtn{
+			position: absolute;
+			top: 5px;
+			left: 50%;
+			transform: translate(-50%, 0%);
+			font-size: 26px;
+			color: white;
+		}
+		#leftbtn, #rightbtn, #boostbtn, #shootbtn{
+			height: 50px;
+			width: 50px;
+			border-radius: 50%;
+			font-size: 32px;
+			border-style: none;
+			border: 2px solid black;
+			background-color: rgba(150, 200, 255, 0.7);
+			margin: 5px;
+			box-shadow: 0px 5px 2px rgb(50, 0, 200);
+			transition: 0.3s;
+			position: absolute;
+		}
+		#leftbtn{
+			left: 20px;
+		}
+		#rightbtn{
+			left: 100px;
+		}
+		#boostbtn, #shootbtn{
+			right: 40px;
+		}
+		#shootbtn{
+			right: 0px;
+			top: calc(100% - 140px);
+			background-color: rgba(255, 10, 10, 1.0);
+			transition: 0.01s;
+			font-weight: bolder;
+			color: white;
+		}
+		#leftbtn:active, #rightbtn:active, #boostbtn:active, #shootbtn:active{
+			transform: translate(0px, 5px);
+			box-shadow: 0px 0px 2px rgb(50, 0, 200);
+		}
+		#gameoverscreen{
+			position: absolute;
+			height: 100vh;
+			width: 100vw;
+			backdrop-filter: blur(10px);
+			display: none;
+		}
+		#resumebtn, #restartbtn, #sharebtn{
+			height: 50px;
+			width: 100px;
+			border-radius: 10px;
+			position: absolute;
+			top: 35%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		#sharebtn{
+			top: 55%;
+		}
+		#resumebtn{
+			top: 18%;
+		}
+		#gameoverscreen h1{
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			bottom: 100px;
+			color: white;
+			text-shadow: 0px 0px 5px royalblue;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="sketch.js"></script>
+	<div id="gameoverscreen">
+		<button id="resumebtn" onclick="resume()">Resume</button>
+		<button id="restartbtn" onclick="restart()">Restart</button>
+		<button id="sharebtn" onclick="#">SHARE</button>
+		<h2>Created by:<br> Shahnawaz Hussain</h2>
+	</div>
+</body>
+</html>

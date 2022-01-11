@@ -1,0 +1,191 @@
+body{
+	background-color: black;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+#container{
+	background-color: white;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	height: 100vh;
+	width: 100vw;
+	max-width: 450px;
+}
+#header{	
+	height: 40px;
+	width: 100%;
+	padding: 5px 0px;
+	border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.fa-arrow-left, .fa-search, .fa-ellipsis-v{
+	float: left;
+	color: rgb(75, 75, 75);
+	margin: 15px;
+}
+.fa-search, .fa-ellipsis-v{
+	float: right;
+}
+#icon{
+	float: left;
+	height: 80px;
+	width: 80px;
+	border-radius: 15px;
+	margin: 20px;
+	margin-top: 10px;
+}
+#name{
+	position: relative;
+	top: 10px;
+	font-size: 26px;
+	font-weight: bold;
+	margin: 0;
+}
+#company{
+	margin: 0px;
+	position: relative;
+	top: 15px;
+	font-size: 14px;
+	color: rgb(80, 80, 80);
+}
+#ads{
+	position: relative;
+	top: 7px;
+	font-size: 14px;
+	color: rgb(80, 80, 80);
+}
+#ratings{
+	width: 100%;
+	height: auto;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0;
+}
+td{
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0;
+	border-right: 1px solid rgb(180, 180, 180);
+}
+#rate p, #size p, #rated p, #downloads p{
+	margin: 0;
+}
+#rate p{
+	font-size: 20px;
+	font-weight: 600;
+}
+#rate span{
+	font-size: 14px;
+	color: rgb(100, 100, 100);
+}
+
+#size i{
+	font-size: 16px;
+	padding: 2px;
+	margin: 4px;
+	border: 2px solid black;
+}
+#size p{
+	color: rgb(100, 100, 100);
+	font-size: 12px;
+}
+#rated div{
+	width: 20px;
+	position: relative;
+	left: 40%;
+	border: 2px solid black;
+	font-weight: bold;
+}
+#rated p{
+	color: rgb(100, 100, 100);
+	font-size: 14px;
+}
+#downloads p{
+	font-size: 18px;
+	font-weight: bold;
+}
+#downloads span{
+	color: rgb(100, 100, 100);
+	font-size: 14px;
+}
+
+
+#install{
+	padding: 10px;
+	width: calc(100% - 40px);
+	margin: 20px;
+	background-color: rgb(0, 134, 96);
+	border-style: none;
+	border-radius: 5px;
+	font-size: 20px;
+	color: white;
+}
+
+#sscon{
+	width: 100%;
+	white-space: nowrap;
+	overflow-x: scroll;
+}
+.ss{
+	height: 180px;
+	width: 80%;
+	background-color: grey;
+	margin: 5px;
+	display: inline-block;
+	border-radius: 12px;
+}
+.ss img{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 12px;
+}
+
+.ss:first-child{
+	margin-left: 20px;
+}
+.ss:last-child{
+	margin-right: 20px;	
+}
+
+#about{
+	width: 100%;
+	font-size: 20px;
+	padding: 25px 20px;
+	box-sizing: border-box;
+}
+#about i{
+	font-size: 23px;
+	color: rgb(80, 80, 80);
+	float: right;
+}
+#aboutsum{
+	width: 100%;
+	margin: 0;
+	padding: 0px 20px;
+	box-sizing: border-box;
+}
+
+#genere{
+	width: 100%;
+	white-space: nowrap;
+	margin: 40px 0px;
+	overflow-x: scroll;
+}
+#genere div{
+	color: rgb(80, 80, 80);
+	display: inline-block;
+	font-size: 18px;
+	border-radius: 20px;
+	border: 1px solid rgb(200, 200, 200);
+	padding: 5px 20px;
+	margin: 5px;
+}
+#genere div:first-child{
+	margin-left: 20px;
+}
+#genere div:last-child{
+	margin-right: 20px;
+}

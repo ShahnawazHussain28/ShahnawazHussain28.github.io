@@ -1,0 +1,68 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+canvas {
+  display: block;
+}
+
+#colorcheckbox{
+  font-family: sans-serif;
+  color: rgb(202, 245, 100);
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  font-size: 20px;
+  transform: translate(-50%, 0);
+  bottom: 10%;
+  left: 25%;
+  width: calc(50%-10px);
+  line-height: 40px;
+  text-shadow: 0 0 10px rgba(200, 200, 200, 1);
+}
+
+input[type=checkbox]{
+  height: 30px;
+  width: 30px;
+  float: left;
+  border-radius: 20%;
+  
+}
+
+#sizediv{
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  font-size: 20px;
+  font-family: sans-serif;
+  transform: translate(-50%, 0);
+  bottom: 10%;
+  left: 75%;
+  width: 50%;
+  line-height: 40px;
+  text-shadow: 0 0 10px rgba(200, 200, 200, 1);
+}
+
+#lowsize, #highsize{
+  float: left;
+  height: 30px;
+  width: 30px;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 5px;
+  border-radius: 20%;
+}
+#highsize{
+  float: none;
+}
+
+#switchinfo {
+  font-family: sans-serif;
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  width: 100%;
+  bottom: 2%;
+  text-align: center;
+}

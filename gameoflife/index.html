@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="google" content="notranslate">
+	<meta http-equiv="Content-Language" content="en">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Game Of Life</title>
+	<script type="text/javascript" src="p5.min.js"></script>
+	<style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+	body{
+		margin: 0;
+		padding: 0;
+		background: #eee;
+	}
+	*{
+		user-select: none;
+		font-family: "Poppins", sans-serif;
+	}
+	canvas{
+	}
+	button{
+		padding: 4px 10px;
+		margin: 5px;
+		padding: 7px auto;
+		width: 90px;
+	}
+	select{
+		grid-row: auto;
+		margin: 5px;
+		text-align: center;
+		width: 90px;
+	}
+	input[type=text]{
+		margin: 5px;
+		padding: 7px auto;
+		text-align: center;
+		width: 90px;
+	}
+	#container{
+		display: grid;
+		height: 100%;
+		width: 100%;
+		justify-content: center;
+	}
+	.containerVerical{
+		grid-template-rows: auto auto;
+	}
+	.containerHorizontal{
+		grid-template-columns: auto auto;
+	}
+	#gamecont{
+		background: #e1ed93;
+		display: grid;
+	}
+	#qumark{
+		z-index: 50;
+		position: absolute;
+		box-sizing: border-box;
+		left: 0;
+		top: 0;
+		margin: 5px 30px;
+		padding: 0px 12px;
+		font-size: 30px;
+		background-color: #452828;
+		color: white;
+		border-radius: 50%;
+	}
+	#wrapbtn{
+		position: absolute;
+		height: 20px;
+		width: 20px;
+	}
+	label{
+		position: absolute;
+		transform: translate(-100%, 0%);
+	}
+	#helpbox{
+		height: 100vh;
+		width: 100vw;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-color: green;
+		padding: 20px;
+		box-sizing: border-box;
+		visibility: hidden;
+	}
+	#helpbox h2{
+		text-align: center;
+	}
+	#helpbox p a{
+		text-decoration: none;
+	}
+	#sharebtn{
+		text-decoration: none;
+		font-size: 32px;
+		padding: 5px 10px;
+		background-color: #2a3b5f;
+		color: white;
+		border-radius: 5px;
+	}
+	
+	</style>
+</head>
+<body>
+	<p id="qumark" onclick="getHelp()">&#63;</p>
+	<label>Wrap?</label>
+	<input type="checkbox" id="wrapbtn" checked="true">
+	<script type="text/javascript" src="sketch.js"></script>
+	<div id="container"></div>
+	<div id="helpbox">
+		<h2>Conway's Game Of Life</h2>
+		<p>Each cell is denoting a Living Organism. There are two states of a cell: living and dead. Living cells are represented by Black and dead are represented by White color. A cell can survive to the next generation or not is defined by 3 simple rules.</p>
+		<ul>
+			<li>Any live cell with fewer than two live neighbours dies, as if by underpopulation.</li>
+			<li>Any live cell with more than three live neighbours dies, as if by overpopulation.</li>
+			<li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+		</ul>
+		<p>Enjoy and play around with this simulation. Share with others.</p>
+		<p>To Learn more on Wikipedia, <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Click Here</a></p>
+		<a href="https://wa.me/?text=https%3A%2F%2Fitsfunzone.000webhostapp.com%2Fgameoflife" id="sharebtn">SHARE</a>
+	</div>
+</body>
+</html>

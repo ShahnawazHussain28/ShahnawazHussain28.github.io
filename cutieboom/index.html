@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title>Cutie Boom</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+    	function install(){
+    		window.location.href = "https://shahnawaz28.itch.io/cutieboom";
+    	} 
+    	
+        window.onload = () => {
+           let bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
+           bannerNode.parentNode.removeChild(bannerNode);
+        };
+    </script>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<i class="fa fa-arrow-left"></i>
+			<i class="fa fa-ellipsis-v"></i>
+			<i class="fa fa-search"></i>
+		</div>
+		<div id="app-name">
+			<img id="icon" src="icon.png">
+			<p id="name">Cutie Boom</p>
+			<p id="company">Shahnawaz28 Ltd.</p>
+			<p id="ads">Contains ads &#183; In-app purchases</p>
+		</div>
+		<table id="ratings">
+			<tr>
+				<td id="rate">
+					<p>4.8 &#9733;</p> <span>9M reviews</span>
+				</td>
+				<td id="size">
+					<i class="fa fa-download"></i>
+					<p>24 MB</p>
+				</td>
+				<td id="rated">
+					<div>7+</div>
+					<p>Rated for 7+</p>
+				</td>
+				<td id="downloads">
+					<p>10Cr+</p>
+					<span>Downloads</span>
+				</td>
+			</tr>
+		</table>
+		<button id="install" onclick="install()">Install</button>
+		<div id="sscon">
+			<div class="ss"><img src="ss1.jpg"></div>
+			<div class="ss"><img src="ss2.jpg"></div>
+			<div class="ss"><img src="ss3.jpg"></div>
+			<div class="ss"><img src="ss4.jpg"></div>
+			<div class="ss"><img src="ss5.jpg"></div>
+		</div>
+		<div id="about">About this game <i class="fa fa-arrow-right"></i></div>
+		<p id="aboutsum">A relaxing and soothing game to keep you calm in stressful situation</p>
+
+		<div id="genere">
+			<div>Casual</div>
+			<div>Action</div>
+			<div>Runner</div>
+			<div>Offline</div>
+			<div>Single player</div>
+			<div>Stylized</div>
+		</div>
+	</div>
+</body>
+</html>

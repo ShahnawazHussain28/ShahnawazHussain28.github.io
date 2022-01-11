@@ -1,0 +1,59 @@
+body{
+	background: dodgerblue;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	width: 100vw;
+}
+canvas {
+	display: block;
+	position: absolute;
+}
+
+#menu{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	backdrop-filter: blur(10px);
+	z-index: 10;
+	display: none;
+}
+#pause {
+	position: absolute;
+	z-index: 20;
+	top: 20px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	cursor: pointer;
+}
+#pause span {
+	height: 25px;
+	width: 10px;
+	background-color: white;
+	display: inline-block;
+}
+
+#resume, #restart, #share {
+	cursor: pointer;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 40px;
+	width: 100px;
+	color: white;
+	font-size: 1.05em;
+	border-radius: 20px;
+	background: linear-gradient(-90deg, rgb(60,60,60), rgb(80,80,80));
+	border-style: none;
+	box-shadow: 1px 2px 10px black, -1px -2px 10px rgb(170, 170, 170);
+}
+#restart{
+	top: 50%;
+}
+#share{
+	height: 60px;
+	width: 150px;
+	border-radius: 30px;
+	top: 70%;
+}

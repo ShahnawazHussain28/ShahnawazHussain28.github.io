@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Stack-Blocks</title>
+	<script type="text/javascript" src="p5.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+	</style>
+	<style type="text/css">
+		@font-face {
+		  font-family: ChocolateCookies;
+		  src: url(ChocolateCookies.ttf);
+		}
+		html{
+			overflow: hidden;
+		}
+		body{
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			font-family: sans-serif;
+			background-image: linear-gradient(#BDDFF7, #FCF5EC);
+		}
+		#scoredisplay{
+			font-size: 1.5em;
+			width: 100%;
+			text-align: center;
+			user-select: none;
+			font-family: 'Fredoka One', cursive;
+		}
+		#highscoredisplay{
+			position: absolute;
+			font-size: 1em;
+			width: 100%;
+			padding-left: 10px;
+			line-height: 0em;
+			user-select: none;
+			font-family: 'Fredoka One', cursive;
+		}
+		#onscreentext{
+			font-size: 2em;
+			width: 100%;
+			text-align: center;
+			font-weight: bold;
+			user-select: none;
+			font-family: ChocolateCookies, sans-serif;
+		}
+		#pausebtn{
+			font-size: 2em;
+			color: royalblue;
+			width: 100%;
+			text-align: right;
+			box-sizing: border-box;
+			padding-right: 10%;
+			padding-top: 2%;
+		}
+		#ui{
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			backdrop-filter: blur(5px);
+			display: none;
+		}
+		#replaybtn, #resumebtn{
+			position: absolute;
+			top: 30%;
+			font-size: 5em;
+		}
+		#replaybtn{
+			left: 25%;
+			color: #334257;
+		}
+		#resumebtn{
+			right: 25%;
+			color: #334257;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="sketch.js"></script>
+	<div id="ui"><i class="fa fa-undo" id="replaybtn"></i><i class="fa fa-play" id="resumebtn"></i></div>
+	<p id="highscoredisplay">HighScore</p>
+</body>
+</html>

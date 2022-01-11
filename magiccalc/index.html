@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Magic Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		@font-face {
+  			font-family: patrickHand;
+ 			src: url(PatrickHand-Regular.ttf);
+		}
+		body{
+			margin: 0;
+			padding: 0;
+			background-color: black;
+			font-family: patrickHand;
+		}
+		#container{
+			height: 90%;
+			width: 95%;
+			max-width: 300px;
+			min-height: 512px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+		#display, #buttons{
+			height: 50%;
+			width: 100%;
+			border-bottom: 1px solid grey;
+			top: 0px;
+		}
+		#showans{
+			font-size: 32px;
+			text-align: right;
+			width: 100%;
+			padding: 20px;
+			padding-bottom: 0px;
+			box-sizing: border-box;
+			position: relative;
+			top: 55%;
+			font-family: sans-serif;
+			word-wrap: break-word;
+			color: white;
+			font-family: patrickHand;
+		}
+		#buttons{
+			display: flex;
+			flex-wrap: wrap;
+		}
+		#buttons button{
+			 flex-grow: 1;
+			 width: 25%;
+			 font-size: 30px;
+			 color: white;
+			 border: none;
+			 background-color: black;
+			 font-family: patrickHand;
+		}
+		#buttons #c, #buttons #del, #buttons #percent, #buttons #divide, #buttons #mult, #buttons #minus, #buttons #plus{
+			color: #aad100;
+		}
+		#buttons #equal{
+			border-radius: 50%;
+			background-color: #aad100;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="display">
+			<div id="showans"></div>
+		</div>
+		<div id="buttons">
+			<button id="c">c</button>
+			<button id="del">del</button>
+			<button id="percent">%</button>
+			<button id="divide">÷</button>
+			<button id="7">7</button>
+			<button id="8">8</button>
+			<button id="9">9</button>
+			<button id="mult">×</button>
+			<button id="4">4</button>
+			<button id="5">5</button>
+			<button id="6">6</button>
+			<button id="minus">-</button>
+			<button id="1">1</button>
+			<button id="2">2</button>
+			<button id="3">3</button>
+			<button id="plus">+</button>
+			<button id="empty"></button>
+			<button id="0">0</button>
+			<button id="dot">.</button>
+			<button id="equal">=</button>
+		</div>
+	</div>
+	<script type="text/javascript">
+		let one = document.getElementById('1')
+		let two = document.getElementById('2')
+		let three = document.getElementById('3')
+		let four = document.getElementById('4')
+		let five = document.getElementById('5')
+		let six = document.getElementById('6')
+		let seven = document.getElementById('7')
+		let eight = document.getElementById('8')
+		let nine = document.getElementById('9')
+		let zero = document.getElementById('0')
+		let plus = document.getElementById('plus')
+		let minus = document.getElementById('minus')
+		let multiply = document.getElementById('mult')
+		let divide = document.getElementById('divide')
+		let percent = document.getElementById('percent')
+		let del = document.getElementById('del')
+		let c = document.getElementById('c')
+		let dot = document.getElementById('dot')
+		let equal = document.getElementById('equal')
+		let showans = document.getElementById('showans')
+		var number = "";
+		var real = "0";
+
+		var result = prompt("Please enter your friend's number");
+
+		one.onclick = function (){
+			number += 1;
+			real += 1;
+			showans.innerHTML = number;
+		}
+		two.onclick = function (){
+			number += 2;
+			real += 2;
+			showans.innerHTML = number;
+		}
+		three.onclick = function (){
+			number += 3;
+			real += 3;
+			showans.innerHTML = number;
+		}
+		four.onclick = function (){
+			number += 4;
+			real += 4;
+			showans.innerHTML = number;
+		}
+		five.onclick = function (){
+			number += 5;
+			real += 5;
+			showans.innerHTML = number;
+		}
+		six.onclick = function (){
+			number += 6;
+			real += 6;
+			showans.innerHTML = number;
+		}
+		seven.onclick = function (){
+			number += 7;
+			real += 7;
+			showans.innerHTML = number;
+		}
+		eight.onclick = function (){
+			number += 8;
+			real += 8;
+			showans.innerHTML = number;
+		}
+		nine.onclick = function (){
+			number += 9;
+			real += 9;
+			showans.innerHTML = number;
+		}
+		zero.onclick = function (){
+			number += 0;
+			real += 0;
+			showans.innerHTML = number;
+		}
+		plus.onclick = function (){
+			number += "+";
+			real += "+";
+			showans.innerHTML = number;
+		}
+		minus.onclick = function (){
+			number += "-";
+			real += "-";
+			showans.innerHTML = number;
+		}
+		divide.onclick = function (){
+			if (result == null || result == "") {
+				real += "/";
+			}
+			number += "÷";
+			showans.innerHTML = number;
+		}
+		multiply.onclick = function (){
+			if (result == null || result == "") {
+				real += "*";
+			}
+			number += "×";
+			showans.innerHTML = number;
+		}
+		percent.onclick = function (){
+			number += "%";
+			real += "%";
+			showans.innerHTML = number;
+		}
+		dot.onclick = function (){
+			number += ".";
+			real += ".";
+			showans.innerHTML = number;
+		}
+		del.onclick = function (){
+			number = number.substr(0, number.length-1);
+			real = real.substr(0, real.length-1);
+			showans.innerHTML = number;
+		}
+		c.onclick = function (){
+			number = "";
+			real = "";
+			showans.innerHTML = number;
+		}
+		equal.onclick = function (){
+			var output;
+			if (result == null || result == "") {
+				output = eval(real);
+			} else {
+				output = result;
+			}
+			showans.innerHTML = "= " + output;
+			number = "";
+			real = "0";
+		}
+		window.onload = () => {
+           let bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
+            bannerNode.parentNode.removeChild(bannerNode);
+        }
+
+	</script>
+</body>
+</html>

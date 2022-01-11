@@ -1,0 +1,59 @@
+<html><head> 
+  <title>Number Guessing Game. I will read your mind </title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script data-ad-client="ca-pub-1909333473551705" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <link rel="icon" href="https://www.psdgraphics.com/wp-content/uploads/2019/03/automation-icon.jpg">
+    <meta name="description" content="Play this Unique game and let this A.I guess the number you are thinking in your mind. Be patient, It will not take more than 3 minutes. Hope you ENJOY. Made by SHAHNAWAZ HUSSAIN">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+    </style> 
+</head> 
+<body> 
+  <div id="popup"> 
+   <p id="head">Let's Play a Game</p> 
+   <div class="menu_box" id="start_box"> 
+    <p>Think a number between 1 and 1000. I'll try to Guess It. <br> 😉 <br><br> Done thinking?</p> 
+    <button class="menu_btn" id="start" onclick="start()">Done</button> 
+    <button class="menu_btn" id="quit" onclick="quit()">Quit</button> 
+   </div> 
+  </div> 
+  <p id="head">Let's Play a Game</p> 
+  <div id="main"> 
+   <div id="aitext">
+     Is it...? 
+   </div> 
+   <div id="circle"> 
+    <div id="display">
+      225 
+    </div> 
+   </div> 
+   <button class="ctrl" id="high" onclick="high()">Too High</button> 
+   <button class="ctrl" id="low" onclick="low()">Too Low</button> 
+   <button class="ctrl" id="correct" onclick="correct()">Correct</button> 
+   <img class="popper" id="popperL" src="popper.gif"> 
+   <img class="popper" id="popperR" src="popper.gif"> 
+  </div> 
+  <div id="tutoback"> 
+   <div id="tutorial"> 
+    <p id="tutohead">TUTORIAL</p> 
+    <p id="tutotext"> This number is higher or lower than your number? <span onclick="tuto()">OK</span> </p> 
+   </div> 
+  </div> 
+  <div id="win"> 
+   <div class="menu_box" id="end_box"> 
+    <p id="win_text"> Hurrayy! I guessed your number in just <span id="guess_count"></span> turns !!<br><br> I know I can do it faster. Replay to test me<br><br> If you like my hardwork then Share with Everyone. If you don't like then definately SHARE 😜 </p> 
+    <p id="share_pointer">Here is the button😊</p> 
+    <div id="arrow">
+      ⤷ 
+    </div> 
+    <button class="menu_btn" id="share" onclick="share()">Share</button> 
+    <button class="menu_btn" id="replay" onclick="restart()">Replay</button> 
+   </div> 
+  </div> 
+  
+    <script type="text/javascript" src="script.js"></script>
+ 
+
+</body></html>

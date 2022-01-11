@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PDF BOOK</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+</head>
+<body>
+
+	<div id="formPage">
+		<h1>Real PDF Book</h1>
+		<form id="form">
+			<div id="choosebox">
+				<h1>Choose a PDF file</h1>
+				<input type="file" name="pdf" id="pdf">
+				<br>
+				<button id="fetch">Read this BOOK</button>
+			</div>
+			<div id="settingsbox">
+				<label id="reslabel">Resolution (optional) :</label>
+				<input type="number" id="resolution" placeholder="10"> <br>
+				<label id="scalelabel">Scale (optional) :</label>
+				<input type="number" id="scale" placeholder="1.0">
+			</div>
+			<div id="nopdfbox">
+				<h2>Don't have a PDF?</h2>
+				<button id="nopdfbtn">Try this one</button>
+			</div>
+		</form>
+	</div>
+
+	<div id="book">
+		<div id="cover"></div>
+		<div id="shadow"></div>
+	</div>
+	<span class="material-icons" id="left_arrow" onclick="turnleft()">
+		navigate_next
+	</span>
+	<span class="material-icons" id="right_arrow"onclick="turnright()">
+		navigate_next
+	</span>
+    <script type="text/javascript" src="pdfrenderer.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

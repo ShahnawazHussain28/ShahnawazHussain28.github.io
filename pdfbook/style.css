@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+body{
+	margin: 0;
+	padding: 0;
+	background-image: url('wood.jpg');
+	background-size: cover;
+	transform-style: preserve-3d;
+	transform: perspective(1000px);
+	font-family: 'Patrick Hand', sans-serif;
+}
+
+#book{
+	height: 300px;
+	width: 230px;
+	background: whitesmoke;
+	position: absolute;
+	transform-style: preserve-3d;
+	top: 300px;
+	left: 50%;
+	transform: translate(-20%, -50%) rotateX(35deg) rotateZ(-10deg);
+}
+#book::after{
+	content: "";
+	width: 100%;
+	height: 30px;
+	background: #B1B1B1;
+	position: absolute;
+	transform-origin: top;
+	transform: rotateX(-90deg);
+}
+#book::before{
+	content: "";
+	width: 30px;
+	height: 100%;
+	background: #B1B1B1;
+	position: absolute;
+	transform-origin: right;
+	transform: translate3d(-100%, 0px, 0px) rotateY(-90deg);
+}
+
+#cover{
+	height: 100%;
+	width: 100%;
+	background: #50311D;
+	transform-style: preserve-3d;
+	transform-origin: left;
+	transition: 1s;
+	background-image: url("logo.jpg");
+	background-repeat: no-repeat;
+	background-size: 90%;
+	background-position: center;
+}
+
+
+#shadow{
+	height: 90%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	transform-style: preserve-3d;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	transition: 1s;
+	transform: translate3d(0px, 0px, -30px);
+	box-shadow: 0px 0 20px 20px rgba(0, 0, 0, 0.5);
+}
+
+.pages{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	background: white;
+	transform-origin: left;
+	transition: 1s;
+	color: black;
+	font-size: 32px;
+}
+
+#left_arrow, #right_arrow{
+	font-size: 64px;
+	position: absolute;
+	top: 75vh;
+	left: 50%;
+	z-index: 2000;
+	background: rgba(0, 0, 0, 0.3);
+	border-radius: 50%;
+	font-weight: bolder;
+	color: white;
+	cursor: pointer;
+	user-select: none;
+	display: none;
+}
+#left_arrow{
+	transform: translate(-250%, -50%) rotateZ(180deg);
+}
+#right_arrow{
+	transform: translate(150%, -50%);
+}
+
+#formPage{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	min-height: 700px;
+	transform: translateZ(100px);
+	background-color: rgba(0, 0, 0, 1);
+}
+
+#formPage h1 {
+	color: white;
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+	position: absolute;
+	top: 5%;
+}
+#form{
+	background-color: whitesmoke;
+	height: 60%;
+	width: 75%;
+	max-width: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -55%);
+	border-radius: 5px;
+}
+
+#form #choosebox, #form #nopdfbox, #form #settingsbox{
+	border: 2px solid black;
+	margin: 10px;
+}
+#form #choosebox{
+	top: 0px;
+	height: 43%;	
+}
+
+#form #settingsbox{
+	padding: 13.5px;
+}
+
+#form #nopdfbox{
+	bottom: 0%;
+	height: 28%;
+}
+
+#settingsbox label, #settingsbox input{
+	margin: 0px;
+}
+#settingsbox input{
+	position: absolute;
+	right: 0px;
+	margin-right: 20px;
+	width: 40px;
+	border: 1px solid black;
+}
+
+#form h1 {
+	color: black;
+	margin-top: -7px;
+	font-size: 1.5em;
+}
+#form h2 {
+	color: black;
+	margin-top: 5px;
+	font-size: 1.5em;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 69%;
+}
+
+
+#pdf, #fetch, #nopdfbtn{
+	font-size: 1em;	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 10px;
+	max-width: 220px;
+	border: 1px solid black;
+}
+
+#fetch, #nopdfbtn{
+	top: 34%;
+	color: black;
+	background-color: #76ddff;
+	border-radius: 20px;
+	border-style: none;
+	box-shadow: 0px 2px 5px black;
+}
+#nopdfbtn{
+	top: 86%;
+}

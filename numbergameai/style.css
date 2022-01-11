@@ -1,0 +1,321 @@
+body{
+    background-color: #325796;
+}
+
+#popup, #win{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,1);
+    z-index: 30;
+}
+#win{
+    display: none;
+}
+
+.menu_box{
+    height: 50%;
+    width: 92%;
+    min-height: 400px;
+    max-width: 500px;
+    border-radius: 5%;
+    background-color: rgba(255,255,255,1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow:  0 0 10px black, 0 0 20px 2px skyblue;
+}
+
+#start_box p{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bolder;
+    font-family: sans-serif;
+    line-height: 30px;
+    margin: 30px;
+}
+
+.menu_btn{
+    position: fixed;
+    transform: translate(-50%,-50%);
+    top: 75%;
+    height: 12vw;
+    width: 25vw;
+    max-height: 50px;
+    max-width: 100px;
+    min-height: 30px;
+    min-width: 70px;
+    background-color: #719fb0;
+    border-radius: 8%;
+    outline: none;
+    border: none;
+    font-size: 25px;
+    font-weight: bolder;
+    color: white;
+    box-shadow: 0px 10px 0px #513d54;
+    text-shadow: 1px 1px 3px black;
+    z-index: 12;
+}
+.menu_btn:active{
+    transform: translate(-50%, -35%);
+    box-shadow: 0px 3px 0px #513d54;
+    transition: 0.05s;
+}
+
+#start{
+    left: 75%;;
+}
+#quit{
+    left: 25%;
+}
+#share{
+    top: 80%;
+    left: 75%;
+}
+#replay{
+    font-size: 23px;
+    top: 80%;
+    left: 25%;
+}
+
+#main{
+    background-color: #50469f;
+    height: 65%;
+    width: 92%;
+    min-height: 400px;
+    max-width: 500px;
+    position: relative;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    font-family: sans-serif;
+    border-radius: 5%;
+    box-shadow: 0px 0px 25px 5px white;
+    background-size: 100% 100%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+
+@keyframes fadeout{
+    0%{ opacity: 1;}
+    100%{ opacity: 0;}
+}
+
+#head{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+}
+
+#aitext{
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    display: inline-block;
+    position: relative;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    padding-right: 3px;
+    margin: 2%;
+    animation: cursor 1s linear infinite;
+    box-sizing: border-box;
+    text-shadow: 0px 0px 5px darkblue;
+    z-index: 10;
+}
+@keyframes cursor{
+    0%{border-right: 2px solid skyblue;}
+    50%{border-right: none;}
+    100%{border-right: 2px solid skyblue;}
+}
+
+
+#circle{
+    height: 60vw;
+    width: 60vw;
+    max-height: 220px;
+    max-width: 220px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0px 0px 20px 2px black;
+}
+
+#display{
+    height: 10vw;
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 46px;
+    font-weight: bolder;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.ctrl{
+    font-family: sans-serif;
+    color: black;
+    font-size: 18px;
+    font-weight: bolder;
+    height: 12vw;
+    width: 25vw;
+    max-height: 50px;
+    max-width: 100px;
+    min-height: 30px;
+    min-width: 70px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 85%;
+    border: none;
+    border-radius: 6vw;
+    text-shadow: 0px 0px 10px white;
+    box-shadow: 0px 0px 30px -10px rgba(255,255,255,0.5),
+                inset 0px 0px 10px 0px rgba(255,255,255,0.5),
+                0px 5px 15px 3px black;
+    background-color: #00ccff;
+    white-space: nowrap;
+    outline: none;
+}
+
+.ctrl:active{
+    transform: translate(-50%, -45%);
+    box-shadow: 0px 0px 30px -10px rgba(255,255,255,0.5),
+                inset 0px 0px 10px 0px rgba(255,255,255,0.5),
+                0px 5px 5px 0px black;
+    transition: 0.03s;
+}
+
+#high{
+    left: 18%;
+}
+#low{
+    left: 50%;
+}
+#correct{
+    left: 82%;
+}
+
+.popper{
+    position: absolute;
+    top: 90%;
+    left: -5%;
+    transform: translate(0%,-100%);
+    display: none;
+}
+#popperR{
+    transform: translate(-100%,-100%)  rotateY(180deg);
+    left: 105%;
+}
+
+#win_text{
+    margin: 10px 10px 0 10px;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    margin: 15px;
+}
+#share_pointer{
+    position: absolute;
+    top: 60%;
+    left: 75%;
+    width: 100%;
+    transform: translate(-50%,0%);
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold;
+    color: #00021c;
+    text-shadow: 0 0 5px white;
+    z-index: 20;
+}
+#arrow{
+    font-size: 60px;
+    position: fixed;
+    top: 80%;
+    left: 57%;
+    opacity: 0;
+    transform: translate(-50%,-50%) rotate(20deg);
+    animation: blink 1s linear infinite;
+    animation-direction: alternate;
+}
+@keyframes blink{
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
+#tutoback{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+    height: 100vh;
+    width: 100vw;
+    background-image: radial-gradient(circle closest-side, transparent 70%, black 130%);
+}
+
+@media only screen and (max-width: 500px) {
+  #tutoback {
+    background-image: none;
+  }
+}
+
+#tutorial{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 100%;
+    width: 100%;
+    min-height: 400px;
+    max-width: 500px;
+    color: white;
+    font-size: 20px;
+    background-color: transparent;
+    box-shadow: inset 0 0 130px 80px black;
+}
+#tutotext{
+    margin: 30px;
+    padding: 10px;
+    position: absolute;
+    top: 43%;
+    z-index: 20;
+    text-shadow: 0px 0px 10px black;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 5px; 
+}
+#tutotext span{
+    background-color: red;
+    padding: 10px 25px;
+    border-radius: 5px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+    border: 2px solid white;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: 0.2s;
+    opacity: 1;
+}
+
+#tutohead{
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translate(-100%,0%) rotate(-20deg);
+    font-size: 34px;
+    color: white;
+    font-weight: bolder;
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Solver</title>
+    <script src="p5.min.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body, html {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            background-color: #B1D0E0;
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bolder;
+            font-family: sans-serif;
+            color: white;
+            background-color: #1A374D;
+            padding: 15px 0px;
+            margin: 0;
+        }
+        #inputs {
+            width: 100%;
+            min-width: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        td input {
+            margin: 2px;
+            padding: 3px;
+        }
+        .MathJax {
+            font-size: 28px !important;
+        }
+        mjx-container {
+            padding: 20px;
+            font-size: 36px;
+        }
+        .elems {
+            /*margin: 8px 2px;*/
+            width: 15px;
+            height: 15px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+        .matrix {
+            position: relative;
+            margin: 50px;
+            width: fit-content;
+            display: inline-block;
+        }
+        .brackets span {
+            position: absolute;
+            top: -50%;
+            left: 25%;
+            transform: translate(-130%, 0);
+            font-size: 150px;
+        }
+        .brackets span:first-child{
+
+        }
+        .brackets span:last-child{
+            transform: translate(130%, 0);
+        }
+        #calculate {
+            font-size: 18px;
+            padding: 10px;
+            box-shadow: 0 5px 3px #406882;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0);
+            border-radius: 5px;
+            border-style: none;
+            transition: 0.1s;
+        }
+        #calculate:active {
+            transform: translate(-50%, 5px);
+            box-shadow: 0 0 3px #406882;
+        }
+        #symbol {
+            margin: 0;
+            padding: 0;
+        }
+        select {
+            padding: 7px;
+            margin: 10px;
+        }
+       @media only screen and (max-width: 600px) {
+            header {
+                font-size: 22px;
+            }
+            .brackets {
+                font-size: 120px;
+                /*transform: translate(-80%, -35px);*/
+            }
+            .brackets:last-child {
+                /*transform: translate(90%, -35px);*/
+            }
+            .elems {
+                font-size: 1em;
+                /*margin: 4px 0px;*/
+            }
+            .matrix {
+                margin: 30px;
+            }
+            #calculate {
+                padding: 7px;
+            }
+            .MathJax {
+                font-size: 18px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="sketch.js"></script>
+    <header>
+        <span id="headerText">Matrix Multiplication</span> 
+        <select onchange="changeOperation(this)">
+            <option>Multiply</option>
+            <option>Inverse</option>
+            <option>Addition</option>
+            <option>Subtraction</option>
+        </select>
+    </header>
+    <div id="inputs">
+        <!-- <div class="matrix" id="matrix1">
+            <span class="brackets">[</span>
+            <input class="elems" type="text" inputmode="numeric" id="a11">
+            <input class="elems" type="text" inputmode="numeric" id="a12">
+            <input class="elems" type="text" inputmode="numeric" id="a13"> <br>
+            <input class="elems" type="text" inputmode="numeric" id="a21">
+            <input class="elems" type="text" inputmode="numeric" id="a22">
+            <input class="elems" type="text" inputmode="numeric" id="a23"> <br>
+            <input class="elems" type="text" inputmode="numeric" id="a31">
+            <input class="elems" type="text" inputmode="numeric" id="a32">
+            <input class="elems" type="text" inputmode="numeric" id="a33">
+            <span class="brackets">]</span>
+        </div>
+        <span id="symbol">&#10006</span>
+        <div class="matrix" id="matrix2">
+            <span class="brackets">[</span>
+            <input class="elems" type="text" inputmode="numeric" id="b11">
+            <input class="elems" type="text" inputmode="numeric" id="b12">
+            <input class="elems" type="text" inputmode="numeric" id="b13"> <br>
+            <input class="elems" type="text" inputmode="numeric" id="b21">
+            <input class="elems" type="text" inputmode="numeric" id="b22">
+            <input class="elems" type="text" inputmode="numeric" id="b23"> <br>
+            <input class="elems" type="text" inputmode="numeric" id="b31">
+            <input class="elems" type="text" inputmode="numeric" id="b32">
+            <input class="elems" type="text" inputmode="numeric" id="b33">
+            <span class="brackets">]</span>
+        </div> -->
+        <div class="matrix" id="matrix1">
+            <table>
+                <div class="brackets">
+                    <span>[</span>
+                    <span>]</span>
+                </div>
+                <tr>
+                    <td><input class="elems" type="text" inputmode="numeric" id="a11"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="a12"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="a13"></td>
+                </tr>
+                <tr>
+                    <td><input class="elems" type="text" inputmode="numeric" id="a21"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="a22"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="a23"></td>
+                </tr>
+                <tr>
+                    <td><input class="elems" type="text" inputmode="numeric" id="a31"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="a32"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="a33"></td>
+                </tr>
+            </table>
+        </div>
+        <span id="symbol">&#10006</span>
+        <div class="matrix" id="matrix2">
+            <table>
+                <div class="brackets">
+                    <span>[</span>
+                    <span>]</span>
+                </div>
+                <tr>
+                    <td><input class="elems" type="text" inputmode="numeric" id="b11"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="b12"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="b13"> <br></td>
+                </tr>
+                <tr>
+                    <td><input class="elems" type="text" inputmode="numeric" id="b21"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="b22"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="b23"> <br></td>
+                </tr>
+                <tr>
+                    <td><input class="elems" type="text" inputmode="numeric" id="b31"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="b32"></td>
+                    <td><input class="elems" type="text" inputmode="numeric" id="b33"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br>
+    <button onclick="calculate()" id="calculate">MULTIPLY</button>
+    <div id="displayMatrix"></div>
+
+</body>

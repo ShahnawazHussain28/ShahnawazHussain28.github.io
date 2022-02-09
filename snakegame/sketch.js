@@ -74,6 +74,7 @@ function win() {
 function restart () {
 	snakeBody = [];
 	score = 0;
+	scoreDisplay.html("Score: " + score);
 	head = new Head(floor(cols/2), floor(rows/2));
 	snakeBody.push([head.pos.x, head.pos.y]);
 	food = new Food();

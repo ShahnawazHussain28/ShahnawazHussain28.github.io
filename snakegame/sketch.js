@@ -17,7 +17,7 @@ function setup() {
 	snakeBody.push([head.pos.x, head.pos.y]);
 	food = new Food();
 	frameRate(10);
-	gameOverScreen = createDiv().id("gameOverScreen");
+	gameOverScreen = createDiv().id("gameOverScreen").hide();
 	restartBtn = createButton("Restart").mousePressed(restart).parent(gameOverScreen);
 	controls = createDiv().id("controls").parent(select("body"));
 	createDiv().parent(controls).id("centerBtn");

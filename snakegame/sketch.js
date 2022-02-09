@@ -4,10 +4,11 @@ let w = 20;
 let rows, cols;
 let controls, up, down, left, right;
 var score = 0, scoreDisplay;
+let gameOverScreen, restartBtn;
 
 
 function setup() {
-	var canvasW = constrain(windowWidth - 50, 0, 900);
+	var canvasW = constrain(windowWidth - 30, 0, 900);
 	var canvasH = windowHeight-200;
 	rows = floor(canvasH / w);
 	cols = floor(canvasW / w);
@@ -16,7 +17,8 @@ function setup() {
 	snakeBody.push([head.pos.x, head.pos.y]);
 	food = new Food();
 	frameRate(10);
-
+	gameOverScreen = createDiv().id("gameOverScreen");
+	restartBtn = createButton("Restart").mousePressed(restart).parent(gameOverScreen);
 	controls = createDiv().id("controls").parent(select("body"));
 	createDiv().parent(controls).id("centerBtn");
 	up = createButton("&#11165;").parent(controls).class("button").id("up").attribute("onmousedown", "UpAction()");
@@ -50,19 +52,15 @@ function keyPressed() {
 
 function UpAction(){
 	if(head.dir.y != 1) head.dir = createVector(0, -1);
-	console.log(head.dir.x, head.dir.y);
 }
 function DownAction(){
 	if(head.dir.y != -1) head.dir = createVector(0, 1);
-	console.log(head.dir.x, head.dir.y);
 }
 function LeftAction(){
 	if(head.dir.x != 1) head.dir = createVector(-1, 0);
-	console.log(head.dir.x, head.dir.y);
 }
 function RightAction(){
 	if(head.dir.x != -1) head.dir = createVector(1, 0);
-	console.log(head.dir.x, head.dir.y);
 }
 
 function win() {
@@ -70,6 +68,20 @@ function win() {
 	textSize(36);
 	noStroke();
 	text("You Won", width/2, height/2);
+	noLoop();
+}
+
+function restart () {
+	snakeBody = [];
+	score = 0;
+	head = new Head(floor(cols/2), floor(rows/2));
+	snakeBody.push([head.pos.x, head.pos.y]);
+	food = new Food();
+	gameOverScreen.hide();
+	loop();
+}
+function gameOver () {
+	gameOverScreen.style("display", "flex");
 	noLoop();
 }
 
@@ -106,7 +118,7 @@ class Head {
 		for (var i = 2; i < snakeBody.length; i++) {
 			if (head.pos.x == snakeBody[i][0] && head.pos.y == snakeBody[i][1]) {
 				collided = true;
-				console.log("Game Over");
+				gameOver();
 				break;
 			}
 		}

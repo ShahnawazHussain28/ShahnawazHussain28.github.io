@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Game</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: cursive;
+        }
+        .container button{
+            padding: 10px 15px;
+            background-color: #89aecf;
+            font-family: cursive;
+            font-size: 1.2em;
+            border-style: none;
+            border-radius: 5px;
+        }
+        #viewabout{
+            padding: 5px;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            font-weight: bolder;
+            margin-top: 50px;
+            background-color: rgb(238, 97, 97);
+        }
+        #about{
+            width: 70%;
+            max-width: 350px;
+            box-shadow: 0 0 10px black;
+            border-radius: 15px;
+            padding: 10px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: 0.5s;
+            text-align: center;
+            z-index: 1000;
+            cursor: pointer;
+            background-color: white;
+        }
+        #about span{
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 2.0em;
+            background-color: #89aecf;
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+            line-height: 0.75em;
+        }
+        #about strong{
+            font-size: 1.5em;
+        }
+        </style>
+</head>
+<body>
+    <script src="script.js" defer></script>
+    <canvas style="display: none;"></canvas>
+    <div class="container">
+        <h3>This doesn't work on mobile phones. Use Desktop or Laptop instead</h3>
+        <h2 id="info" style="text-align: center;">See the website icon</h2>
+        <button onclick="restart()">Restart</button>
+        <button id="viewabout" onclick="viewAbout()">?</button>
+        <div id="about">Where is the game you wonder? It is there on this website's icon.
+            Use Desktop or Laptop to play. This is a simple game. 
+            You just have to catch the falling balls.
+            The best part is not the game, it is the way this game is presented.
+            This project shows the capabilities of JavaScript. How creative you can be.
+            The worst thing about this is you have a 16px &times; 16px game window.
+            You strain your eyes by playing it. Just a reminder, <br> 
+            <strong><b>"Be More Creative"</b></strong>
+            <span onclick="closeAbout()">&times;</span>
+        </div>
+    </div>
+</body>
+</html>

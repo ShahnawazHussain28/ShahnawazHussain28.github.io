@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Code</title>
+    <script src="p5.min.js"></script>
+    <script src="p5.sound.js"></script>
+    <script src="morsedata.js"></script>
+    <script src="test.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="header">
+        <h2>Morse Translator</h2>
+        <a href="https://en.wikipedia.org/wiki/Morse_code"><button>?</button></a>
+    </div>
+    <div class="container">
+        <br>
+        <textArea id="inputBox" placeholder="type morse or text. morse letters should be separated by space and words separated by / or |"></textArea>
+        <div class="buttons">
+            <button id="playBtn" onclick="generateSound(this)">Play</button>
+            <button id="soundBtn" class="active" onclick="toggleSound(this)">Sound</button>
+            <button id="flashBtn" class="active" onclick="toggleFlash(this)">Flash</button>
+            <button id="listenBtn" onclick="toggleListen(this)">Listen</button>
+        </div>
+        <div id="freq">
+            <input type="checkbox" id="usefreq">
+            <input type="range" min="100" step="100" max="22000" value="5000" id="freqslider" disabled>
+            <input type="number" id="freqtext" disabled>
+            <span id="freqtextunit">Hz</span>
+        </div>
+        <h4 class="outputtext">Output:</h4>
+        <div class="output"></div>
+        <div class="light">
+            <i class="fa fa-expand" onclick="lightFullScreen()"></i>
+        </div>
+        <div id="cnvcontainer">
+            <canvas class="graph1" height="100px"></canvas>
+            <span id="cnvclose" onclick="canvasClose(this)">&times;</span>
+        </div>
+    </div>
+    <footer>Made by <span>Shahnawaz Hussain</span></footer>
+    <script src="sketch.js"></script>
+</body>
+</html>

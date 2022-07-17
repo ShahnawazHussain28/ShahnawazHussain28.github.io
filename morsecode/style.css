@@ -1,0 +1,175 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    background-color: #3375B2;
+}
+.header{
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 5px 10px rgb(7, 185, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+.header h2{
+    margin: 10px 5px;
+}
+.header a{
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.header a button{
+    background-color: #233f5b;
+    border-style: none;
+    padding: 2px;
+    box-sizing: border-box;
+    font-weight: bold;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    font-size: 1.3em;
+}
+.container{
+    position: relative;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: #7fa6ca;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 5px 15px 5px;
+    border-radius: 15px;
+    box-shadow: -5px 8px 0 #445769, 
+                -9px 12px 15px #2b3743;
+}
+.container h1{
+    text-align: center;
+}
+.container textarea{
+    width: 90%;
+    height: 80px;
+    font-size: 1.2em;
+    background-color: white;
+}
+textarea::placeholder{
+    font-size: 0.8em;
+}
+.container .buttons{
+    width: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.container button{
+    margin: 10px 3px;
+    padding: 6px 10px;
+    font-size: 1.2em;
+    border-style: none;
+    border: 1px solid black;
+    background-color: #eee;
+    min-width: fit-content;
+}
+button:active{
+    background-color: #2b3743;
+}
+button.active{
+    background-color: rgb(128, 143, 255);
+}
+button:disabled{
+    background-color: rgb(133, 147, 163);
+}
+#freq{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+}
+#usefreq{
+    height: 25px;
+    width: 25px;
+}
+#freqslider{
+    flex-grow: 1;
+    margin-right: 10px;
+}
+#freqtext{
+    width: 40px;
+    background-color: #7fa6ca;
+    border-style: none;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-size: 1.2em;
+}
+#freqtext:focus{
+    outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container .outputtext{
+    text-align: left;
+    width: 90%;
+    margin: 5px;
+}
+.container .output{
+    width: 90%;
+    min-height: 40px;
+    font-size: 1.2em;
+    background-color: white;
+    cursor: text;
+    font-family: monospace;
+}
+.container .light{
+    position: relative;
+    width: 90%;
+    margin-top: 15px;
+    min-height: 100px;
+    background-color: black;
+}
+.light i{
+    position: absolute;
+    color: #aaa;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+#cnvcontainer{
+    position: relative;
+    display: block;
+    transition: 0.2s;
+    width: 90%;
+}
+.container canvas{
+    height: 100px;
+    width: 100%;
+    margin-top: 15px;
+}
+#cnvclose{
+    font-size: 2em;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    cursor: pointer;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    padding: 5px 10px;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+footer span{
+    font-weight: 900;
+}

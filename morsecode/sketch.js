@@ -42,8 +42,11 @@ useFreq.addEventListener('change', () => {
         freqSlider.disabled = false;
         freqText.disabled = false;
     } else {
+        freqSlider.value = 500;
         freqSlider.disabled = true;
+        freqText.value = 500;
         freqText.disabled = true;
+        freq = 500;
     }
 })
 

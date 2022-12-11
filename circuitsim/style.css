@@ -1,0 +1,169 @@
+*{
+    user-select: none;
+    scrollbar-width: 10px;
+}
+/* *::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(105, 105, 105);
+    outline: 1px solid slategrey;
+} */
+body{
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+#expandcnv, #fullscreen, #helpbtn, #cleardatabtn{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+}
+#expandcnv svg{
+    scale: 1.2;
+    color: white;
+}
+#fullscreen{
+    left: 120px;
+    top: 7px;
+    color: white;
+}
+#fullscreen svg{
+    height: 20px;
+    width: 20px;
+}
+#helpbtn{
+    top: 5px;
+    left: 60px;
+    font-size: large;
+}
+#cleardatabtn{
+    top: 0;
+    left: 180px;
+    color: white;
+    font-size: 1.5rem;
+}
+.cnvcontcont{
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+.cnvcont{
+    height: 100%;
+    width: 100%;
+}
+.cnvcont.full{
+    height: 500%;
+    width: 500%;
+}
+.sidebar.vr{
+    position: fixed;
+    display: flex;
+    top: 0;
+    right: 5px;
+    flex-direction: column;
+    height: 100%;
+    overflow-x: hide;
+    overflow-y: scroll;
+}
+.sidebar.hr{
+    position: fixed;
+    display: flex;
+    bottom: 5px;
+    left: 0;
+    flex-direction: row;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.nodebtn{
+    background-color: #222;
+    color: white;
+    font-family: monospace;
+    border-style: none;
+    padding: 15px 10px;
+    margin: 5px 2px;
+}
+.nodebtn:active{
+    background-color: rgb(41, 37, 75);
+}
+.sidebar.hr > .nodebtn{
+    padding: 10px 15px;
+    margin: 2px 5px;
+}
+
+#actionpanel{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    display: none;
+    flex-direction: column;
+    width: 120px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+#actionpanel button{
+    padding: 10px 5px;
+    margin: 2px 0;
+    border-radius: 2px;
+    z-index: 1000;
+}
+#actionpanel div{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+    translate: 50% -50%;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+#helpcontainer{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    background-color: rgba(0,0,0,0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+#helpcontainer.active{
+    display: flex;
+}
+#innerhelp{
+    width: fit-content;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+}
+#innerhelp div{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 2.5rem;
+    translate: -50% 0;
+    cursor: pointer;
+}
+#innerhelp ul li{
+    margin: 10px 0;
+}
+kbd{
+    background-color: #333;
+    color: #ddd;
+    padding: 3px 6px;
+    border-radius: 2px;
+}

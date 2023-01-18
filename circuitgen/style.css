@@ -1,0 +1,105 @@
+body{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}
+.inputs{
+    margin: 20px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#solvebtn{
+    width: 50%;
+    padding: 10px 0px;
+    background-color: blueviolet;
+    color: white;
+    border-style: none;
+    border-radius: 5px;
+}
+#varcount{
+    width: 30px;
+    margin: 10px 0;
+}
+#displayinput{
+    background-color: rgb(190, 238, 238);
+    width: fit-content;
+    padding: 20px;
+    margin: 10px;
+}
+#displayinput input{
+    width: 30px;
+}
+.binary{
+    letter-spacing: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.row{
+    display: flex;
+    gap: 10px;
+}
+.row .decimal{
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 0;
+    width: 30px;
+}
+#booleanfunction{
+    color: white;
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: larger;
+    font-family: monospace;
+}
+#booleanfunction.active{
+    background-color: rgb(51, 51, 51);
+    padding: 10px;
+}
+#notebook{
+    width: 100%;
+    padding: 10px;
+    display: none;
+}
+#notebook.active{
+    display: block;
+}
+.mintermheader{
+    font-size: 0.9em;
+}
+.mintermheader span{
+    padding: 0 5px;
+    overflow: hidden;
+    font-size: 2em;
+    background-color: #ddd;
+}
+#mdcontainer{
+    font-family: monospace;
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+#mdcontainer div{
+    display: flex;
+}
+#mdcontainer div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+}
+#mdcontainer div input{
+    width: 80%;
+    height: 100%;
+}
+#or{
+    font-size: 1.5em;
+}
+
+@media (width < 500px) {
+    body{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}

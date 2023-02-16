@@ -55,7 +55,9 @@
         <button class="nodebtn" onclick="placeNode(new JUNCTION())">JUNCTION</button>
         <button class="nodebtn" onclick="placeNode(new INPUT())">Input</button>
         <button class="nodebtn" onclick="placeNode(new OUTPUT())">Output</button>
-        <button class="nodebtn" onclick="placeNode(new PULSE())">Pulse</button>
+        <button class="nodebtn" onclick="placeNode(new PULSE())" id="pulse">Pulse</button>
+        <button class="nodebtn" onclick="placeNode(new NEG_EDGE_PULSE())" id="pulse">-ve Edge</button>
+        <button class="nodebtn" onclick="placeNode(new POS_EDGE_PULSE())" id="pulse">+ve Edge</button>
         <button class="nodebtn" onclick="placeNode(new AND())">AND</button>
         <button class="nodebtn" onclick="placeNode(new OR())">OR</button>
         <button class="nodebtn" onclick="placeNode(new NOT())">NOT</button>
@@ -69,7 +71,11 @@
         <button class="nodebtn" onclick="placeNode(new NOR_3())">3-NOR</button>
         <button class="nodebtn" onclick="placeNode(new SR_LATCH())">SR-LATCH</button>
         <button class="nodebtn" onclick="placeNode(new D_LATCH())">D-LATCH</button>
+        <button class="nodebtn" onclick="placeNode(new D_FLIPFLOP())">D-FLIPFLOP</button>
+        <button class="nodebtn" onclick="placeNode(new JK_FLIPFLOP())">JK-FLIPFLOP</button>
         <button class="nodebtn" onclick="placeNode(new REGISTER_4())">REGISTER_4bit</button>
+        <button class="nodebtn" onclick="placeNode(new DISPLAY())">7-DISPLAY</button>
+        <button class="nodebtn" onclick="placeNode(new DISPLAY_DRIVER())">DISPLAY_DRIVER</button>
     </div>
     <script src="script.js" defer></script>
 </body>

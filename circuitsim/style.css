@@ -95,7 +95,17 @@ body{
     padding: 10px 15px;
     margin: 2px 5px;
 }
-
+#pulse{
+    animation: pulse 1s linear infinite;
+}
+@keyframes pulse {
+    0%{
+        background-color: red;
+    }
+    50%{
+        background-color: #222;
+    }
+}
 #actionpanel{
     position: fixed;
     top: 50%;

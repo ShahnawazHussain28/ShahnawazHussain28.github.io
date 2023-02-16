@@ -120,11 +120,14 @@ function mouseReleased() {
         for (let i = 0; i < nearest.inputPos.length; i++) {
             let p = nearest.inputPos[i];
             if (isInsideRect(nearest.x + p.x, nearest.y + p.y, 12, 12, lineEnd.x, lineEnd.y)) {
+                let isConnected = false;
                 if (lining.node.type == types.junction) {
                     lining.node.outputNodes.push({ node: nearest, index: i })
                 } else {
                     lining.node.outputNodes[lining.index] = { node: nearest, index: i }
                 }
+                if (nearest.type == types.negedgepulse || nearest.type == types.posedgepulse)
+                    nearest.inputConnected = true;
             }
         }
     } else if (lining?.type == 'input') {
@@ -133,6 +136,9 @@ function mouseReleased() {
             if (isInsideRect(nearest.x + p.x, nearest.y + p.y, 12, 12, lineEnd.x, lineEnd.y)) {
                 if (nearest.type == types.junction) {
                     nearest.outputNodes.push({ node: lining.node, index: lining.index })
+                } else if(lining.node.type == types.negedgepulse || lining.node.type == types.posedgepulse){
+                    nearest.outputNodes[i] = { node: lining.node, index: lining.index }
+                    lining.node.inputConnected = true;
                 } else {
                     nearest.outputNodes[i] = { node: lining.node, index: lining.index }
                 }
@@ -190,6 +196,11 @@ function deleteNode(node) {
         hideOptions();
         return;
     }
+    for (let i = 0; i < node.outputNodes.length; i++) {
+        if(node.outputNodes[i]?.node?.inputConnected == true){
+            node.outputNodes[i].node.inputConnected = false;
+        }
+    }
     for (let i = 0; i < nodes.length; i++) {
         for (let j = 0; j < nodes[i].outputNodes.length; j++) {
             if (nodes[i].outputNodes[j]?.node == node) {
@@ -210,6 +221,9 @@ function breakOutputConnection(node) {
     }
     for(let i = 0; i < node.outputNodes.length; i++){
         node.outputNodes[i]?.node.setInput(0, node.outputNodes[i].index);
+        if(node.outputNodes[i]?.node.inputConnected == true){
+            node.outputNodes[i].node.inputConnected == false;
+        }
     }
     node.outputNodes.fill(null);
     image(bg, 0, 0);
@@ -227,11 +241,6 @@ function showOptions() {
 function createGroup() {
     try {
         if (!nodes) return;
-        let name = prompt("Enter the Name of this group");
-        if (!name) {
-            alert("Enter a valid name");
-            return;
-        }
         let inputs = nodes.filter(node => (node.type == types.input) || (node.type == types.pulse));
         let gNodes = [];
         let _ids = [];
@@ -242,6 +251,13 @@ function createGroup() {
             alert("Cannot group Sequential Circuits. Sorry :(")
             return;
         }
+        let name = prompt("Enter the Name of this group");
+        if (!name) {
+            alert("Enter a valid name");
+            return;
+        }
+        let gateDelay = prompt("Enter gate delay in Millisecons (default = 30)");
+        if(!gateDelay) gateDelay = 30;
         inputs = gNodes.filter(n => n.type == types.input)
         let inpNames = inputs.map(a => a.name);
         let outputs = gNodes.filter(n => n.type == types.output)
@@ -253,7 +269,7 @@ function createGroup() {
             return;
         }
         let boolFunc = getBooleanFunction(outputs);
-        let groupNode = new GROUP(name, inpNames.sort(), outNames, boolFunc);
+        let groupNode = new GROUP(name, inpNames.sort(), outNames, boolFunc, gateDelay);
         createdNodes.push(groupNode);
         let sidebar = document.getElementsByClassName('sidebar')[0];
         let btn = createButton(groupNode.type);
@@ -347,10 +363,13 @@ function placeNode(node) {
 
 function listFromString(str) {
     if (str.length == 1) return [str];
-    for (let i = str.length - 1; i >= 0; i--) {
-        if (str[i].match(/\w/) && str[i - 1].match(/\W/))
-            str = str.substring(0, i) + '.' + str.substring(i, i + 1) + '.' + str.substring(i + 1)
-    }
+    // for (let i = str.length - 1; i >= 0; i--) {
+        // if (str[i].match(/\w/) && str[i - 1].match(/\W/))
+        //     str = str.substring(0, i) + '.' + str.substring(i, i + 1) + '.' + str.substring(i + 1)
+    // }
+    str.replace(/\w+\d*/g, match => `.${match}.`)
+    console.log(str)
+    console.log(str.split('.'))
     return str.split('.');
 }
 
@@ -439,33 +458,3 @@ var handleEvent = function (e) {
 };
 cnvcontcont.addEventListener('scroll', handleEvent, false);
 cnvcontcont.addEventListener('touchmove', handleEvent, false);
-
-function createHalfAdder() {
-    let inp1 = new INPUT();
-    inp1.name = 'b'
-    let inp2 = new INPUT();
-    inp2.name = 'a'
-    let out1 = new OUTPUT();
-    out1.name = 's'
-    let out2 = new OUTPUT();
-    out2.name = 'c'
-    let and = new AND();
-    let xor = new XOR();
-    let junc1 = new JUNCTION();
-    let junc2 = new JUNCTION();
-    inp1.outputNodes = [{ node: junc1, index: 0 }]
-    inp2.outputNodes = [{ node: junc2, index: 0 }]
-    junc1.outputNodes = [{ node: xor, index: 0 }, { node: and, index: 0 }]
-    junc2.outputNodes = [{ node: xor, index: 1 }, { node: and, index: 1 }]
-    xor.outputNodes = [{ node: out1, index: 0 }]
-    and.outputNodes = [{ node: out2, index: 0 }]
-    placeNode(inp1)
-    placeNode(inp2)
-    placeNode(junc1)
-    placeNode(junc2)
-    placeNode(xor)
-    placeNode(and)
-    placeNode(out1)
-    placeNode(out2)
-    createGroup()
-}

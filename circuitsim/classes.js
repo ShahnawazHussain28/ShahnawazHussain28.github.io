@@ -14,10 +14,17 @@ let types = {
     xnor: 'XNOR',
     srlatch: 'SR_LATCH',
     dlatch: "D_LATCH",
+    dflipflop: "D_FLIPFLOP",
+    jkflipflop: "JK_FLIPFLOP",
     register4: "REGISTER_4",
+    display: "DISPLAY",
+    displayDriver: "DISPLAY_DRIVER",
     junction: 'J',
-    pulse: 'PULSE'
+    pulse: 'PULSE',
+    negedgepulse: 'NEG_EDGE',
+    posedgepulse: 'POS_EDGE'
 }
+
 let operations = {
     INPUT: '',
     OUTPUT: 'a',
@@ -31,29 +38,36 @@ let operations = {
     NOR: '(!(a | b))',
     NOR3: '(!(a | b | c))',
     XOR: '(a ^ b)',
-    XNOR: '(!(a ^ b)',
+    XNOR: '(!(a ^ b))',
     SR_LATCH: '!(!a & !(!b & o1))',
     D_LATCH: '',
+    D_FLIPFLOP: '',
+    JK_FLIPFLOP: '',
     REGISTER_4: '',
+    DISPLAY: '',
+    DISPLAY_DRIVER: '',
     J: 'a',
-    PULSE: ''
+    PULSE: '',
+    NEG_EDGE: '',
+    POS_EDGE: '',
 }
 let nodeData = {};
 let id = 0;
 class Node{
-    constructor(type, inp, out, x = 100, y = 100){
+    constructor(type, inp, out, x = 100, y = 100, w, h){
         this.id = Date.now() + id++;
         this.type = type;
         this.input = inp;
         this.output = out;
         this.x = x; this.y = y;
-        this.h = (max(this.input, this.output) * 15) + 20;
-        this.w = this.type.length * 10 + 30;
+        this.h = h ?? (max(this.input, this.output) * 15) + 20;
+        this.w = w ?? this.type.length * 10 + 30;
         this.outputNodes = new Array(out).fill(null);
         this.inputVal = new Array(this.input).fill(0);
         this.inputPos = evenlySpreadPoints(-this.w/2, -this.h/2, -this.w/2, this.h/2, this.input);
         this.outputPos = evenlySpreadPoints(this.w/2, -this.h/2, this.w/2, this.h/2, this.output);
         this.isCombinational = true;
+        this.gateDelay = 10;
     }
     move(x, y){
         this.x = x;
@@ -68,9 +82,10 @@ class Node{
         rect(this.x, this.y, this.w, this.h)
         fill('#fff')
         textAlign(CENTER, CENTER)
-        text(this.name != undefined? this.name : this.type, this.x, this.y)
+        text(this.name != undefined? this.name.replace("_", "\n") : this.type.replace("_", "\n"), this.x, this.y)
         push();
         textAlign(RIGHT);
+        textSize(10)
         for (let i = 0; i < this.outputPos.length; i++) {
             rect(this.x+this.outputPos[i].x, this.y+this.outputPos[i].y, 12, 10);
             if(this.outputNames?.[i]){
@@ -106,7 +121,7 @@ class INPUT extends Node{
         this.state = !this.state;
     }
     show(){
-        super.show(this.state? '#f44' : '#333');
+        super.show(this.state? '#922' : '#333');
     }
 }
 class PULSE extends Node{
@@ -125,7 +140,63 @@ class PULSE extends Node{
         this.freq = ((this.freq + 10) % 100) + 10;
     }
     show(){
-        super.show(this.state? '#f44' : '#333');
+        super.show(this.state? '#922' : '#333');
+    }
+}
+class NEG_EDGE_PULSE extends Node{
+    constructor(x, y){
+        super(types.negedgepulse, 1, 1, x, y);
+        this.state = false;
+        this.freq = 10;
+        this.prevState = false;
+        this.inputConnected = false;
+    }
+    operate(){
+        if(this.inputConnected == false){
+            if(frameCount % this.freq == 0){
+                this.state = !this.state;
+            }
+        } else {
+            this.state = this.inputVal[0];
+        }
+        this.outputNodes[0]?.node.setInput(0, this.outputNodes[0].index)
+        if(this.prevState == 1 && this.state == 0)
+        this.outputNodes[0]?.node.setInput(1, this.outputNodes[0].index)
+        this.prevState = this.state;
+    }
+    onclick(){
+        this.freq = ((this.freq + 10) % 100) + 10;
+    }
+    show(){
+        super.show(this.state? '#922' : '#333');
+    }
+}
+class POS_EDGE_PULSE extends Node{
+    constructor(x, y){
+        super(types.posedgepulse, 1, 1, x, y);
+        this.state = false;
+        this.freq = 10;
+        this.prevState = false;
+        this.inputConnected = false;
+    }
+    operate(){
+        if(this.inputConnected == false){
+            if(frameCount % this.freq == 0){
+                this.state = !this.state;
+            }
+        } else {
+            this.state = this.inputVal[0];
+        }
+        this.outputNodes[0]?.node.setInput(0, this.outputNodes[0].index)
+        if(this.prevState == 0 && this.state == 1)
+            this.outputNodes[0]?.node.setInput(1, this.outputNodes[0].index)
+        this.prevState = this.state;
+    }
+    onclick(){
+        this.freq = ((this.freq + 10) % 100) + 10;
+    }
+    show(){
+        super.show(this.state? '#922' : '#333');
     }
 }
 class OUTPUT extends Node{
@@ -137,7 +208,7 @@ class OUTPUT extends Node{
         this.state = Boolean(this.inputVal[0])
     }
     show(){
-        super.show(this.state? '#f44' : '#333');
+        super.show(this.state? '#922' : '#333');
     }
 }
 class AND extends Node{
@@ -146,16 +217,16 @@ class AND extends Node{
     }
     operate(){
         let a = this.inputVal[0], b = this.inputVal[1];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class AND_3 extends Node{
     constructor(x, y){
-        super(types.and3, 2, 1, x, y);
+        super(types.and3, 3, 1, x, y);
     }
     operate(){
         let a = this.inputVal[0], b = this.inputVal[1], c = this.inputVal[2];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class OR extends Node{
@@ -164,7 +235,7 @@ class OR extends Node{
     }
     operate(){
         let a = this.inputVal[0], b = this.inputVal[1];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class OR_3 extends Node{
@@ -173,7 +244,7 @@ class OR_3 extends Node{
     }
     operate(){
         let a = this.inputVal[0], b = this.inputVal[1], c = this.inputVal[2];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class NOT extends Node{
@@ -182,7 +253,7 @@ class NOT extends Node{
     }
     operate(){
         let a = this.inputVal[0];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class NAND extends Node{
@@ -191,7 +262,7 @@ class NAND extends Node{
     }
     operate(){
         let a = this.inputVal[0], b = this.inputVal[1];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class NAND_3 extends Node{
@@ -200,7 +271,7 @@ class NAND_3 extends Node{
     }
     operate(){
         let a = this.inputVal[0], b = this.inputVal[1], c = this.inputVal[2];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class NOR extends Node{
@@ -209,7 +280,7 @@ class NOR extends Node{
     }
     operate(){
         let a = this.inputVal[0], b = this.inputVal[1];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class NOR_3 extends Node{
@@ -218,7 +289,7 @@ class NOR_3 extends Node{
     }
     operate(){
         let a = this.inputVal[0], b = this.inputVal[1], c = this.inputVal[2];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class XOR extends Node{
@@ -227,7 +298,7 @@ class XOR extends Node{
     }
     operate(){
         let a = this.inputVal[0], b = this.inputVal[1];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class XNOR extends Node{
@@ -236,13 +307,13 @@ class XNOR extends Node{
     }
     operate(){
         let a = this.inputVal[0], b = this.inputVal[1];
-        this.outputNodes[0]?.node.setInput(eval(operations[this.type]), this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], eval(operations[this.type]), this.gateDelay)
     }
 }
 class SR_LATCH extends Node{
     constructor(x, y) {
         super(types.srlatch, 2, 2, x, y);
-        this.outputVal = new Array(2).fill(0);
+        this.outputVal = [0, 0];
         this.inputNames = ['S', 'R'];
         this.outputNames = ['Q', "Q'"];
         this.isCombinational = false;
@@ -255,28 +326,84 @@ class SR_LATCH extends Node{
         if(a == 1 && b == 1) invalid = true;
         this.outputVal[0] = invalid? 1 : res;
         this.outputVal[1] = invalid? 1 : !res;
-        this.outputNodes[0]?.node.setInput(this.outputVal[0], this.outputNodes[0].index);
-        this.outputNodes[1]?.node.setInput(this.outputVal[1], this.outputNodes[1].index);
+        propagateOutput(this.outputNodes[0], this.outputVal[0], this.gateDelay)
+        propagateOutput(this.outputNodes[1], this.outputVal[1], this.gateDelay)
     }
 }
 class D_LATCH extends Node{
     constructor(x, y){
-        super(types.dlatch, 2, 1, x, y);
-        this.outputVal = [0];
-        this.inputNames = ['d', 's'];
+        super(types.dlatch, 2, 2, x, y);
+        this.outputVal = [0, 0];
+        this.inputNames = ['Q', 'clk'];
         this.isCombinational = false;
     }
     operate(){
         if(this.inputVal[1] == 1){
             this.outputVal[0] = this.inputVal[0];
+            this.outputVal[1] = !this.outputVal[0];
         }
-        this.outputNodes[0]?.node.setInput(this.outputVal[0], this.outputNodes[0].index);
+        propagateOutput(this.outputNodes[0], this.outputVal[0], this.gateDelay)
+        propagateOutput(this.outputNodes[1], this.outputVal[1], this.gateDelay)
+    }
+}
+class D_FLIPFLOP extends Node{
+    constructor(x, y){
+        super(types.dflipflop, 4, 2, x, y);
+        this.outputVal = [0, 0];
+        this.inputNames = ['PRS', 'CLR', 'D', 'clk'];
+        this.isCombinational = false;
+        this.gateDelay = 10; // ms
+    }
+    operate(){
+        let clk = this.inputVal[3]
+        if (this.inputVal[0] == 1 || this.inputVal[1] == 1) { 
+            if(this.inputVal[0] == 1 && this.inputVal[1] == 1) this.outputVal.fill(1);
+            else if(this.inputVal[0] == 1) this.outputVal[0] = 1;
+            else if(this.inputVal[1] == 1) this.outputVal[0] = 0;
+        } else {
+            if(clk == 1){
+                this.outputVal[0] = this.inputVal[2];
+                this.outputVal[1] = !this.outputVal[0];
+            }
+        }
+        propagateOutput(this.outputNodes[0], this.outputVal[0], this.gateDelay)
+        propagateOutput(this.outputNodes[1], this.outputVal[1], this.gateDelay)
+    }
+    show(){
+        super.show(this.outputVal[0] == 1? '#922' : '#333');
+        text(Number(this.outputVal[0]), this.x, this.y-15)
+    }
+}
+class JK_FLIPFLOP extends Node{
+    constructor(x, y){
+        super(types.jkflipflop, 3, 2, x, y);
+        this.outputVal = [0, 1];
+        this.inputNames = ['J', 'K', 'clk'];
+        this.isCombinational = false;
+        this.gateDelay = 10; // ms
+    }
+    operate(){
+        let clk = this.inputVal[2]    
+        if(clk == 1){
+            if(this.inputVal[0] == 1 && this.inputVal[1] == 1){
+                this.outputVal[0] = !this.outputVal[0]
+                this.outputVal[1] = !this.outputVal[1]
+            } else if(this.inputVal[0] == 1 || this.inputVal[1] == 1){
+                this.outputVal[0] = this.inputVal[0];
+                this.outputVal[1] = !this.outputVal[0];
+            }
+        }
+        propagateOutput(this.outputNodes[0], this.outputVal[0], this.gateDelay)
+        propagateOutput(this.outputNodes[1], this.outputVal[1], this.gateDelay)
+    }
+    show(){
+        super.show(this.outputVal[0] == 1? '#922' : '#333');
+        text(Number(this.outputVal[0]), this.x, this.y-25)
     }
 }
 class REGISTER_4 extends Node{
     constructor(x, y){
         super(types.register4, 6, 4, x, y);
-        this.prevClock = 0;
         this.inputNames = ['a0','a1','a2','a3','store','clock']
         this.outputNames = ['a0','a1','a2','a3','store','clock']
         this.outputVal = new Array(4).fill(0);
@@ -284,7 +411,7 @@ class REGISTER_4 extends Node{
     }
     operate(){
         let currClock = this.inputVal[5];
-        if(this.prevClock == 0 && currClock == 1){
+        if(currClock == 1){
             if(this.inputVal[4] == 1){
                 for(let i = 0; i < this.outputVal.length; i++){
                     this.outputVal[i] = this.inputVal[i];
@@ -292,9 +419,8 @@ class REGISTER_4 extends Node{
             }
         }
         for(let i = 0; i < this.outputNodes.length; i++){
-            this.outputNodes[i]?.node.setInput(this.outputVal[i], this.outputNodes[i].index);
+            propagateOutput(this.outputNodes[i], this.outputVal[i], this.gateDelay)
         }
-        this.prevClock = currClock;
     }
     show(){
         super.show();
@@ -305,14 +431,82 @@ class REGISTER_4 extends Node{
         text(num, this.x, this.y - 30);
     }
 }
+class DISPLAY extends Node{
+    constructor(x, y){
+        super(types.display, 7, 0, x, y, 100, 150);
+        this.prevClock = 0;
+        this.inputNames = ['a0','a1','a2','a3','a4','a5','a6']
+        this.isCombinational = false;
+    }
+    operate(){}
+    show(){
+        push();
+        rectMode(CENTER)
+        fill('#333')
+        translate(this.x, this.y)
+        rect(0, 0, this.w, this.h)
+        textAlign(LEFT, CENTER);
+        fill(255)
+        for (let i = 0; i < this.inputPos.length; i++) {
+            rect(this.inputPos[i].x, this.inputPos[i].y, 12, 10);
+            if(this.inputNames?.[i]){
+                text(this.inputNames[i], this.inputPos[i].x+7, this.inputPos[i].y);
+            }
+        }
+        translate(10, 0)
+        stroke(255)
+        strokeWeight(5)
+        let ledSize = 40, gap = 8
+        stroke(this.inputVal[0] == 1? 255 : 70)
+        line(-ledSize/2,-ledSize-gap*2,ledSize/2,-ledSize-gap*2) // 0
+        stroke(this.inputVal[1] == 1? 255 : 70)
+        line(ledSize/2+gap,-gap,ledSize/2+gap,-ledSize-gap) // 1
+        stroke(this.inputVal[2] == 1? 255 : 70)
+        line(ledSize/2+gap,gap,ledSize/2+gap,ledSize+gap) // 2
+        stroke(this.inputVal[3] == 1? 255 : 70)
+        line(-ledSize/2,ledSize+gap*2,ledSize/2,ledSize+gap*2) // 3
+        stroke(this.inputVal[4] == 1? 255 : 70)
+        line(-ledSize/2-gap,gap,-ledSize/2-gap,ledSize+gap) // 4
+        stroke(this.inputVal[5] == 1? 255 : 70)
+        line(-ledSize/2-gap,-gap,-ledSize/2-gap,-ledSize-gap) // 5
+        stroke(this.inputVal[6] == 1? 255 : 70)
+        line(-ledSize/2,0,ledSize/2,0) // 6
+        pop();
+    }
+}
+class DISPLAY_DRIVER extends Node{
+    constructor(x, y){
+        super(types.displayDriver, 4, 7, x, y, 100, 150);
+        this.inputNames = ['a0','a1','a2','a3']
+        this.isCombinational = false;
+    }
+    operate(){
+        let num = 0, leds;
+        this.inputVal.forEach((v, i) => num += Math.pow(2, i)*v);
+        if(num == 0) leds = [1,1,1,1,1,1,0];
+        else if(num == 1) leds = [0,1,1,0,0,0,0];
+        else if(num == 2) leds = [1,1,0,1,1,0,1];
+        else if(num == 3) leds = [1,1,1,1,0,0,1];
+        else if(num == 4) leds = [0,1,1,0,0,1,1];
+        else if(num == 5) leds = [1,0,1,1,0,1,1];
+        else if(num == 6) leds = [1,0,1,1,1,1,1];
+        else if(num == 7) leds = [1,1,1,0,0,0,0];
+        else if(num == 8) leds = [1,1,1,1,1,1,1];
+        else if(num == 9) leds = [1,1,1,1,0,1,1];
+        else leds = [0,0,0,0,0,0,0];
+        for(let i = 0; i < leds.length; i++)
+            propagateOutput(this.outputNodes[i], leds[i], this.gateDelay);
+    }
+}
 class JUNCTION extends Node{
     constructor(x, y){
         super(types.junction, 1, 1, x, y)
+        this.gateDelay = 0;
     }
     operate(){
         this.outputNodes.forEach(out => {
             let a = this.inputVal[0];
-            out?.node.setInput(eval(operations[this.type]), out.index);
+            propagateOutput(out, eval(operations[this.type]), this.gateDelay)
         });
     }
     show(){
@@ -349,7 +543,7 @@ function evenlySpreadPoints(x1, y1, x2, y2, n){
 }
 
 class GROUP extends Node{
-    constructor(name, inputs, outputs, boolfunctions, x, y){
+    constructor(name, inputs, outputs, boolfunctions, gateDelay, x, y){
         if(!types[name.toLowerCase()]){
             types[name.toLowerCase()] = name.toUpperCase();
             localStorage.setItem(localStorageTypesKey, JSON.stringify(types))
@@ -364,6 +558,7 @@ class GROUP extends Node{
         this.inputNames = inputs;
         this.outputNames = outputs;
         this.boolfunctions = boolfunctions;
+        this.gateDelay = gateDelay
     }
     operate(){
         for(let i = 0; i < this.outputNames.length; i++){
@@ -379,11 +574,18 @@ class GROUP extends Node{
         }
     }
     clone(){
-        return new GROUP(this.type, this.inputNames, this.outputNames, this.boolfunctions)
+        return new GROUP(this.type, this.inputNames, this.outputNames, this.boolfunctions, this.gateDelay)
     }
     show(){
         super.show();
     }
+}
+
+function propagateOutput(output, val, delay){
+    if (!output) return;
+    setTimeout(() => {
+        output.node.setInput(val, output.index);
+    }, delay);
 }
 
 function isInsideRect(cx, cy, w, h, x, y, tx = 0, ty = 0){

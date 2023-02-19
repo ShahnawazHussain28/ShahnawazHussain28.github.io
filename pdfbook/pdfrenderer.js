@@ -1,4 +1,4 @@
-let url = "https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf";
+let url = "https://file-examples.com/storage/fe1aa0c9d563ea1e4a1fd34/2017/10/file-sample_150kB.pdf";
 let canvas;
 let pdfDoc = null,
     pagenum = 1,

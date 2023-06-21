@@ -1,0 +1,228 @@
+body{
+	background-color: black;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+#container{
+	background-color: white;
+	width: 100vw;
+	max-width: 450px;
+	margin: 0;
+}
+#header{	
+	height: 40px;
+	width: 100%;
+	padding: 10px 0px;
+}
+
+.fa-arrow-left, .fa-search, .fa-ellipsis-v{
+	float: left;
+	color: rgb(75, 75, 75);
+	margin: 15px;
+}
+.fa-search, .fa-ellipsis-v{
+	float: right;
+}
+#app-name{
+	display: flex;
+	align-items: center;
+}
+#namecont{
+	display: flex;
+	flex-direction: column;
+}
+#icon{
+	height: 80px;
+	width: 80px;
+	border-radius: 15px;
+	margin-top: 10px;
+	margin: 0px 25px;
+}
+#name{
+	margin: 0;
+	position: relative;
+	top: 10px;
+	font-size: 26px;
+	font-weight: bold;
+}
+#company{
+	margin: 0px;
+	position: relative;
+	top: 12px;
+	font-size: 14px;
+	color: rgb(0, 134, 96);
+}
+#ads{
+	font-size: 14px;
+	color: rgb(80, 80, 80);
+}
+#ratings{
+	height: auto;
+	text-align: center;
+	vertical-align: middle;
+	overflow-x: scroll;
+	display: grid;
+	grid-template-columns: repeat(4, 120px);
+}
+#ratings div{
+	display: flex;
+	justify-content: center;
+	border-right: 1px solid rgb(180, 180, 180);
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin: 10px 0px;
+}
+#rate p, #size p, #rated p, #downloads p{
+	margin: 0;
+	font-weight: 550;
+}
+#ratings div span{
+	font-size: 14px;
+	color: rgb(100, 100, 100);
+}
+#size i{
+	font-size: 16px;
+	padding: 2px;
+	margin: 4px;
+	border: 2px solid black;
+}
+#size span{
+	color: rgb(100, 100, 100);
+	font-size: 12px;
+}
+#rated p{
+	width: 20px;
+	position: relative;
+	border: 2px solid black;
+	font-weight: bold;
+	color: rgb(100, 100, 100);
+	font-size: 14px;
+}
+#downloads p{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+
+#install{
+	padding: 10px;
+	width: calc(100% - 40px);
+	margin: 20px;
+	background-color: rgb(0, 134, 96);
+	border-style: none;
+	border-radius: 500px;
+	font-size: 20px;
+	color: white;
+}
+
+#sscon{
+	width: 100%;
+	white-space: nowrap;
+	overflow-x: scroll;
+}
+.ss{
+	height: 180px;
+	width: 80%;
+	background-color: grey;
+	margin: 5px;
+	display: inline-block;
+	border-radius: 12px;
+}
+.ss img{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 12px;
+}
+
+.ss:first-child{
+	margin-left: 20px;
+}
+.ss:last-child{
+	margin-right: 20px;	
+}
+
+#about{
+	width: 100%;
+	font-size: 20px;
+	padding: 25px 20px;
+	box-sizing: border-box;
+}
+#about i{
+	font-size: 23px;
+	color: rgb(80, 80, 80);
+	float: right;
+}
+#aboutsum{
+	width: 100%;
+	margin: 0;
+	padding: 0px 20px;
+	box-sizing: border-box;
+}
+
+#genere{
+	width: 100%;
+	white-space: nowrap;
+	margin: 40px 0px;
+	overflow-x: scroll;
+}
+#genere div{
+	color: rgb(80, 80, 80);
+	display: inline-block;
+	font-size: 18px;
+	border-radius: 7px;
+	border: 1px solid rgb(200, 200, 200);
+	padding: 5px 20px;
+	margin: 5px;
+}
+#genere div:first-child{
+	margin-left: 20px;
+}
+#genere div:last-child{
+	margin-right: 20px;
+}
+#morediv{
+	width: 100%;
+	display: flex;
+	overflow-x: scroll;
+	background-color: rgb(44, 38, 54);
+	padding: 20px;
+	box-sizing: border-box;
+	color: white;
+	margin-bottom: 30px;
+}
+#moregamecompany{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0 20px;
+	margin-right: 50px;
+}
+#moregametext{
+	font-size: 0.9em;
+	white-space: nowrap;
+}
+#moregamebutton{
+	background-color: transparent;
+	color: white;
+	border-style: none;
+	border: 1px solid white;
+	padding: 10px 20px;
+	border-radius: 200px;
+}
+#moregamecontainer{
+	height: 100%;
+}
+#moregamecontainer img{
+	background-color: #445;
+	border: 1px solid white;
+	border-radius: 10px;
+	height: 120px;
+}
+#moregamecontainer p{
+	margin: 2px
+}

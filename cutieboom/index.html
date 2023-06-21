@@ -6,16 +6,6 @@
 	<title>Cutie Boom</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript">
-    	function install(){
-    		window.location.href = "https://shahnawaz28.itch.io/cutieboom";
-    	} 
-    	
-        window.onload = () => {
-           let bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
-           bannerNode.parentNode.removeChild(bannerNode);
-        };
-    </script>
 </head>
 <body>
 	<div id="container">
@@ -26,29 +16,30 @@
 		</div>
 		<div id="app-name">
 			<img id="icon" src="icon.png">
-			<p id="name">Cutie Boom</p>
-			<p id="company">Shahnawaz28 Ltd.</p>
-			<p id="ads">Contains ads &#183; In-app purchases</p>
+			<div id="namecont">
+				<p id="name">Cutie Boom</p>
+				<p id="company">Shahnawaz Lab</p>
+				<p id="ads">Contains ads &#183;</p>
+			</div>
 		</div>
-		<table id="ratings">
-			<tr>
-				<td id="rate">
-					<p>4.8 &#9733;</p> <span>9M reviews</span>
-				</td>
-				<td id="size">
-					<i class="fa fa-download"></i>
-					<p>24 MB</p>
-				</td>
-				<td id="rated">
-					<div>7+</div>
-					<p>Rated for 7+</p>
-				</td>
-				<td id="downloads">
-					<p>10Cr+</p>
-					<span>Downloads</span>
-				</td>
-			</tr>
-		</table>
+		<div id="ratings">
+			<div id="rate">
+				<p>4.8 &#9733;</p> 
+				<span>9M reviews</span>
+			</div>
+			<div id="size">
+				<i class="fa fa-download"></i>
+				<span>35 MB</span>
+			</div>
+			<div id="rated">
+				<p>7+</p>
+				<span>Rated for 7+</span>
+			</div>
+			<div id="downloads">
+				<p>7Cr+</p>
+				<span>Downloads</span>
+			</div>
+		</div>
 		<button id="install" onclick="install()">Install</button>
 		<div id="sscon">
 			<div class="ss"><img src="ss1.jpg"></div>
@@ -68,6 +59,29 @@
 			<div>Single player</div>
 			<div>Stylized</div>
 		</div>
+		<div id="morediv">
+			<div id="moregamecompany">
+				<img src="companyicon.jpg">
+				<p id="moregametext">More by Shahnawaz Lab</p>
+				<button id="moregamebutton">More</button>
+			</div>
+			<div id="moregamecontainer">
+				<div id="moregame" onclick="gotoSquidGame()">
+					<img src="squidgameicon.png">
+					<p class="moregamename">Squid Game</p>
+					<p class="moregamerating">4.8 &#9733;</p>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	function install(){
+		window.location.href = "https://shahnawaz28.itch.io/cutieboom";
+	} 
+	function gotoSquidGame(){
+		window.location.href = "https://shahnawazhussain28.github.io/squidgame";
+	}
+
+</script>
 </html>

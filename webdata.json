@@ -1,0 +1,158 @@
+[
+    {
+        "name": "Number Guessing Game",
+        "description": "Check Out if a Computer can guess your number!",
+        "link": "numbergameai",
+        "thumbLink": "thumbnails/ai.jpg"
+    },
+    {
+        "name": "Magic Calculator",
+        "description": "Learn a new Magic trick with this calculator",
+        "link": "magiccalc",
+        "thumbLink": "thumbnails/magiccalc.jpg"
+    },
+    {
+        "name": "Real PDF Book",
+        "description": "See how a pdf should look as a functional book",
+        "link": "pdfbook",
+        "thumbLink": "thumbnails/pdfbook.jpg"
+    },
+    {
+        "name": "Tic-Tac-Toe",
+        "description": "Play this nostalgic game with AI pattern detection",
+        "link": "tictactoe",
+        "thumbLink": "thumbnails/tictactoe.jpg"
+    },
+    {
+        "name": "Asteroids",
+        "description": "Destroy the asteroids with laser beam and help the space ship survive",
+        "link": "asteroids",
+        "thumbLink": "thumbnails/asteroids.jpg"
+    },
+    {
+        "name": "Stack-Blocks",
+        "description": "A full 3D game without installing. Let's see how high you can get upto",
+        "link": "stackblocks",
+        "thumbLink": "thumbnails/stackblocks.jpg"
+    },
+    {
+        "name": "Cutie Boom",
+        "description": "Who is bad, who is good? Let's find out. Download this game now",
+        "link": "cutieboom",
+        "thumbLink": "thumbnails/cutieboom.jpg"
+    },
+    {
+        "name": "Squid Game",
+        "description": "You are stuck on an island. Play the game of death to escape",
+        "link": "squidgame",
+        "thumbLink": "thumbnails/squidgame.jpg"
+    },
+    {
+        "name": "Dino Game",
+        "description": "Play this classical Chrome dino game in this website",
+        "link": "dinogame",
+        "thumbLink": "thumbnails/dino.jpg"
+    },
+    {
+        "name": "Flappy Plane",
+        "description": "Don't let the plane crash between buildings",
+        "link": "flappyplane",
+        "thumbLink": "thumbnails/flappybird.jpg"
+    },
+    {
+        "name": "Tetris",
+        "description": "Tried to create it. But it is still under developement",
+        "link": "tetris",
+        "thumbLink": "thumbnails/tetris.jpg"
+    },
+    {
+        "name": "Ghost Camera",
+        "description": "Like those hazy camera effect used for ghosts? Try yourself in real time",
+        "link": "ghostcam",
+        "thumbLink": "thumbnails/ghostcam.jpg"
+    },
+    {
+        "name": "ASCII Camera",
+        "description": "Represent yourself in numbers and letters. Only works with Monospace",
+        "link": "asciicam",
+        "thumbLink": "thumbnails/asciicam.jpg"
+    },
+    {
+        "name": "Box Camera",
+        "description": "Like Minecraft? See yourself with the least quality, only boxes",
+        "link": "boxcam",
+        "thumbLink": "thumbnails/boxmirror.jpg"
+    },
+    {
+        "name": "Game Of Life",
+        "description": "Defined by only 3 simple rules but playing with this is FUN",
+        "link": "gameoflife",
+        "thumbLink": "thumbnails/gameoflife.png"
+    },
+    {
+        "name": "Fractal Tree",
+        "description": "A completely symmetric tree you want to look at. Can be asymmetric too",
+        "link": "fractaltree",
+        "thumbLink": "thumbnails/fractaltree.jpg"
+    },
+    {
+        "name": "Decode Pattern",
+        "description": "Do you think you are master of Pattern lock?  Play this.",
+        "link": "decodepattern",
+        "thumbLink": "thumbnails/decodepattern.jpg"
+    },
+    {
+        "name": "Digital Fireworks",
+        "description": "Let's launch some fireworks and watch them even if its not an occation",
+        "link": "fireworks",
+        "thumbLink": "thumbnails/fireworks.jpg"
+    },
+    {
+        "name": "Matrix Solver",
+        "description": "Tired of doing matrix problems. Here is the solution.",
+        "link": "matrixsolver",
+        "thumbLink": "thumbnails/matrixsolver.jpg"
+    },
+    {
+        "name": "Maze Generator and Solver",
+        "description": "Generate some pleasing mazes and try to solve them or let the program do that.",
+        "link": "mazegenerator",
+        "thumbLink": "thumbnails/mazegenerator.jpg"
+    },
+    {
+        "name": "Snake Game",
+        "description": "Let's play the classic snake game and refresh our memories.",
+        "link": "snakegame",
+        "thumbLink": "thumbnails/snakegame.jpg"
+    },
+    {
+        "name": "Solar System Visualization",
+        "description": "How does our Solar System work? See the killer Visualization.",
+        "link": "solarsystem",
+        "thumbLink": "thumbnails/solarsystem.jpg"
+    },
+    {
+        "name": "Favicon Game",
+        "description": "You'll see a completely new level graphics XP.",
+        "link": "favicongame",
+        "thumbLink": "thumbnails/favicongame.jpg"
+    },
+    {
+        "name": "Morse Code",
+        "description": "Use the Famous morse code with tons of functionalities.",
+        "link": "morsecode",
+        "thumbLink": "thumbnails/morsecode.jpg"
+    },
+    {
+        "name": "Circuit Simulator",
+        "description": "Make a circuit on your browser. Or make your own computer XP",
+        "link": "circuitsim",
+        "thumbLink": "thumbnails/circuitsim.jpg"
+    },
+    {
+        "name": "Circuit Generator",
+        "description": "Don't know how to make circuit? Try this k-map solver",
+        "link": "circuitgen",
+        "thumbLink": "thumbnails/circuitgen.jpg"
+    }
+]

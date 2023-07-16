@@ -3,156 +3,182 @@
         "name": "Number Guessing Game",
         "description": "Check Out if a Computer can guess your number!",
         "link": "numbergameai",
-        "thumbLink": "thumbnails/ai.jpg"
+        "thumbLink": "thumbnails/ai.jpg",
+        "tech": ["HTML", "CSS", "JS"]
     },
     {
         "name": "Magic Calculator",
         "description": "Learn a new Magic trick with this calculator",
         "link": "magiccalc",
-        "thumbLink": "thumbnails/magiccalc.jpg"
+        "thumbLink": "thumbnails/magiccalc.jpg",
+        "tech": ["HTML", "CSS", "JS"]
     },
     {
         "name": "Real PDF Book",
         "description": "See how a pdf should look as a functional book",
         "link": "pdfbook",
-        "thumbLink": "thumbnails/pdfbook.jpg"
+        "thumbLink": "thumbnails/pdfbook.jpg",
+        "tech": ["HTML", "CSS", "JS"]
     },
     {
         "name": "Tic-Tac-Toe",
         "description": "Play this nostalgic game with AI pattern detection",
         "link": "tictactoe",
-        "thumbLink": "thumbnails/tictactoe.jpg"
+        "thumbLink": "thumbnails/tictactoe.jpg",
+        "tech": ["JS", "p5js", "ml5"]
     },
     {
         "name": "Asteroids",
         "description": "Destroy the asteroids with laser beam and help the space ship survive",
         "link": "asteroids",
-        "thumbLink": "thumbnails/asteroids.jpg"
+        "thumbLink": "thumbnails/asteroids.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Stack-Blocks",
         "description": "A full 3D game without installing. Let's see how high you can get upto",
         "link": "stackblocks",
-        "thumbLink": "thumbnails/stackblocks.jpg"
+        "thumbLink": "thumbnails/stackblocks.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Cutie Boom",
         "description": "Who is bad, who is good? Let's find out. Download this game now",
         "link": "cutieboom",
-        "thumbLink": "thumbnails/cutieboom.jpg"
+        "thumbLink": "thumbnails/cutieboom.jpg",
+        "tech": ["Unity", "C#"]
     },
     {
         "name": "Squid Game",
         "description": "You are stuck on an island. Play the game of death to escape",
         "link": "squidgame",
-        "thumbLink": "thumbnails/squidgame.jpg"
+        "thumbLink": "thumbnails/squidgame.jpg",
+        "tech": ["Unity", "C#"]
     },
     {
         "name": "Dino Game",
         "description": "Play this classical Chrome dino game in this website",
         "link": "dinogame",
-        "thumbLink": "thumbnails/dino.jpg"
+        "thumbLink": "thumbnails/dino.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Flappy Plane",
         "description": "Don't let the plane crash between buildings",
         "link": "flappyplane",
-        "thumbLink": "thumbnails/flappybird.jpg"
+        "thumbLink": "thumbnails/flappybird.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Tetris",
         "description": "Tried to create it. But it is still under developement",
         "link": "tetris",
-        "thumbLink": "thumbnails/tetris.jpg"
+        "thumbLink": "thumbnails/tetris.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Ghost Camera",
         "description": "Like those hazy camera effect used for ghosts? Try yourself in real time",
         "link": "ghostcam",
-        "thumbLink": "thumbnails/ghostcam.jpg"
+        "thumbLink": "thumbnails/ghostcam.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "ASCII Camera",
         "description": "Represent yourself in numbers and letters. Only works with Monospace",
         "link": "asciicam",
-        "thumbLink": "thumbnails/asciicam.jpg"
+        "thumbLink": "thumbnails/asciicam.jpg",
+        "tech": ["JS"]
     },
     {
         "name": "Box Camera",
         "description": "Like Minecraft? See yourself with the least quality, only boxes",
         "link": "boxcam",
-        "thumbLink": "thumbnails/boxmirror.jpg"
+        "thumbLink": "thumbnails/boxmirror.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Game Of Life",
         "description": "Defined by only 3 simple rules but playing with this is FUN",
         "link": "gameoflife",
-        "thumbLink": "thumbnails/gameoflife.png"
+        "thumbLink": "thumbnails/gameoflife.png",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Fractal Tree",
         "description": "A completely symmetric tree you want to look at. Can be asymmetric too",
         "link": "fractaltree",
-        "thumbLink": "thumbnails/fractaltree.jpg"
+        "thumbLink": "thumbnails/fractaltree.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Decode Pattern",
         "description": "Do you think you are master of Pattern lock?  Play this.",
         "link": "decodepattern",
-        "thumbLink": "thumbnails/decodepattern.jpg"
+        "thumbLink": "thumbnails/decodepattern.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Digital Fireworks",
         "description": "Let's launch some fireworks and watch them even if its not an occation",
         "link": "fireworks",
-        "thumbLink": "thumbnails/fireworks.jpg"
+        "thumbLink": "thumbnails/fireworks.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Matrix Solver",
         "description": "Tired of doing matrix problems. Here is the solution.",
         "link": "matrixsolver",
-        "thumbLink": "thumbnails/matrixsolver.jpg"
+        "thumbLink": "thumbnails/matrixsolver.jpg",
+        "tech": ["HTML", "CSS", "JS"]
     },
     {
         "name": "Maze Generator and Solver",
         "description": "Generate some pleasing mazes and try to solve them or let the program do that.",
         "link": "mazegenerator",
-        "thumbLink": "thumbnails/mazegenerator.jpg"
+        "thumbLink": "thumbnails/mazegenerator.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Snake Game",
         "description": "Let's play the classic snake game and refresh our memories.",
         "link": "snakegame",
-        "thumbLink": "thumbnails/snakegame.jpg"
+        "thumbLink": "thumbnails/snakegame.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Solar System Visualization",
         "description": "How does our Solar System work? See the killer Visualization.",
         "link": "solarsystem",
-        "thumbLink": "thumbnails/solarsystem.jpg"
+        "thumbLink": "thumbnails/solarsystem.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Favicon Game",
         "description": "You'll see a completely new level graphics XP.",
         "link": "favicongame",
-        "thumbLink": "thumbnails/favicongame.jpg"
+        "thumbLink": "thumbnails/favicongame.jpg",
+        "tech": ["HTML", "JS"]
     },
     {
         "name": "Morse Code",
         "description": "Use the Famous morse code with tons of functionalities.",
         "link": "morsecode",
-        "thumbLink": "thumbnails/morsecode.jpg"
+        "thumbLink": "thumbnails/morsecode.jpg",
+        "tech": ["HTML", "CSS", "JS"]
     },
     {
         "name": "Circuit Simulator",
         "description": "Make a circuit on your browser. Or make your own computer XP",
         "link": "circuitsim",
-        "thumbLink": "thumbnails/circuitsim.jpg"
+        "thumbLink": "thumbnails/circuitsim.jpg",
+        "tech": ["JS", "p5js"]
     },
     {
         "name": "Circuit Generator",
         "description": "Don't know how to make circuit? Try this k-map solver",
         "link": "circuitgen",
-        "thumbLink": "thumbnails/circuitgen.jpg"
+        "thumbLink": "thumbnails/circuitgen.jpg",
+        "tech": ["JS", "p5js"]
     }
 ]

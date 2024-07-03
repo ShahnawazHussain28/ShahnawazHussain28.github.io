@@ -6,9 +6,9 @@ if (query.includes("gallery")) {
   console.log(query);
 } else {
   console.log("redirect");
-  // window.location.replace(
-  //   "https://portfolio-shahnawazhussain28s-projects.vercel.app/",
-  // );
+  window.location.replace(
+    "https://portfolio-shahnawazhussain28s-projects.vercel.app/",
+  );
 }
 
 function getDOM(link, thumbLink, name, description) {

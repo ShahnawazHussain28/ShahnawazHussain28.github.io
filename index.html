@@ -1,67 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <title>Some Cool Stuff</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-	<title>Some Cool Stuff</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="script.js" defer></script>
-	<link rel="stylesheet" href="style.css">
-</head>
+  <body>
+    <header id="header">
+      <a href="#" class="logo">PlayGround</a>
+      <ul>
+        <li><a href="#home" onclick="toggle()">Home</a></li>
+        <li><a href="#content" onclick="toggle()">Content</a></li>
+        <li><a href="#about" onclick="toggle()">About</a></li>
+        <li><a href="#contact" onclick="toggle()">Contact</a></li>
+      </ul>
+      <div class="toggle" onclick="toggle()"></div>
+    </header>
+    <!-- Banner -->
+    <section class="banner" id="home">
+      <img src="thumbnails/background.jpg" />
+    </section>
+    <!-- Content -->
+    <section class="utility">
+      <div class="search">
+        <input type="text" id="search-bar" /><i
+          onclick="clearSearch()"
+          class="fa fa-times"
+        ></i>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-title">Sort By: Time</div>
+        <div class="dropdown-content">
+          <p>Time &DownArrow;</p>
+          <p>Complexity &DownArrow;</p>
+        </div>
+      </div>
+    </section>
+    <section class="sec about" id="content"></section>
 
-<body>
-	<header id="header">
-		<a href="#" class="logo">PlayGround</a>
-		<ul>
-			<li><a href="#home" onclick="toggle()">Home</a></li>
-			<li><a href="#content" onclick="toggle()">Content</a></li>
-			<li><a href="#about" onclick="toggle()">About</a></li>
-			<li><a href="#contact" onclick="toggle()">Contact</a></li>
-		</ul>
-		<div class="toggle" onclick="toggle()"></div>
-	</header>
-	<!-- Banner -->
-	<section class="banner" id="home">
-		<img src="thumbnails/background.jpg">
-	</section>
-	<!-- Content -->
-	<section class="utility">
-		<div class="search">
-			<input type="text" id="search-bar"><i onclick="clearSearch()" class="fa fa-times"></i>
-		</div>
-		<div class="dropdown">
-			<div class="dropdown-title">Sort By: Time</div>
-			<div class="dropdown-content">
-				<p>Time &DownArrow;</p>
-				<p>Complexity &DownArrow;</p>
-			</div>
-		</div>
-	</section>
-	<section class="sec about" id="content">
-	</section>
-
-	<!-- About -->
-	<section class="sec" id="about">
-		<div class="cont">
-			<div class="mxw800p">
-				<h3>About the Creator</h3>
-				<p id="about-desc">Hey there, I'm Shahnawaz Hussain, the creator of this website. This website is
-					entirely developed by me and all the content is created by only myself. I'm a first year student of
-					BTech in Computer Science in the college GCETTS. For any queries you can contact me, details are
-					given in the contact section of this page. Enjoy surfing this website. And remember It's FUN Zone.
-				</p>
-			</div>
-		</div>
-	</section>
-	<!-- Contacts -->
-	<section class="sec" id="contact">
-		<h3>Contacts &nbsp;&nbsp;&nbsp;&nbsp; </h3>
-		<a href="https://instagram.com/Shahnawaz.28" target="_blank">
-			<i class="fa fa-instagram"></i>
-		</a>
-		<a href="https://mail.google.com/mail/?view=cm&fs=1&to=filzahussain96@gmail.com" target="_blank">
-			<i class="fa fa-envelope"></i>
-		</a>
-	</section>
-</body>
+    <!-- About -->
+    <section class="sec" id="about">
+      <div class="cont">
+        <div class="mxw800p">
+          <h3>About the Creator</h3>
+          <p id="about-desc">
+            Hey there, I'm Shahnawaz Hussain, the creator of this website. This
+            website is entirely developed by me and all the content is created
+            by only myself. I'm a first year student of BTech in Computer
+            Science in the college GCETTS. For any queries you can contact me,
+            details are given in the contact section of this page. Enjoy surfing
+            this website. And remember It's FUN Zone.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Contacts -->
+    <section class="sec" id="contact">
+      <h3>Contacts &nbsp;&nbsp;&nbsp;&nbsp;</h3>
+      <a href="https://instagram.com/Shahnawaz.28" target="_blank">
+        <i class="fa fa-instagram"></i>
+      </a>
+      <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=filzahussain96@gmail.com"
+        target="_blank"
+      >
+        <i class="fa fa-envelope"></i>
+      </a>
+    </section>
+  </body>
 </html>

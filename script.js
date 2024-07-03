@@ -3,10 +3,12 @@ let contentHTML = "";
 let data = [];
 let query = window.location.search;
 if (query.includes("gallery")) {
+  console.log(query);
 } else {
-  window.location.replace(
-    "https://portfolio-shahnawazhussain28s-projects.vercel.app/",
-  );
+  console.log("redirect");
+  // window.location.replace(
+  //   "https://portfolio-shahnawazhussain28s-projects.vercel.app/",
+  // );
 }
 
 function getDOM(link, thumbLink, name, description) {

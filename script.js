@@ -1,15 +1,6 @@
 let contentDiv = document.getElementById("content");
 let contentHTML = "";
 let data = [];
-let query = window.location.search;
-if (query.includes("gallery")) {
-  console.log(query);
-} else {
-  console.log("redirect");
-  window.location.replace(
-    "https://portfolio-shahnawazhussain28s-projects.vercel.app/",
-  );
-}
 
 function getDOM(link, thumbLink, name, description) {
   let dom = `<div class='services' onclick="window.location.href ='${link}'">

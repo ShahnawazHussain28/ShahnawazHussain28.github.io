@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Steganography</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js" integrity="sha512-I0Pwwz3PPNQkWes+rcSoQqikKFfRmTfGQrcNzZbm8ALaUyJuFdyRinl805shE8xT6iEWsWgvRxdXb3yhQNXKoA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js" defer></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f0f4f8; /* Light blue-gray background */
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Align to top for better content flow */
+        min-height: 100vh;
+        padding: 2rem;
+        box-sizing: border-box;
+      }
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem; /* Rounded button corners */
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+      .btn-primary {
+        background-color: #4a90e2; /* Blue */
+        color: white;
+        border: none;
+      }
+      .btn-primary:hover {
+        background-color: #357abd; /* Darker blue on hover */
+        transform: translateY(-2px);
+      }
+      .btn-secondary {
+        background-color: #e2e8f0; /* Light gray */
+        color: #2d3748; /* Dark gray text */
+        border: none;
+      }
+      .btn-secondary:hover {
+        background-color: #cbd5e0; /* Darker gray on hover */
+        transform: translateY(-2px);
+      }
+      canvas {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.75rem;
+        width: 100%;
+        max-width: 100%;
+        height: min-content;
+        display: block;
+        background-color: #f7fafc; /* Light background for canvas */
+      }
+      textarea {
+        resize: vertical; /* Allow vertical resizing */
+        min-height: 100px;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        border: 1px solid #cbd5e0;
+        font-size: 0.95rem;
+      }
+      input[type="file"] {
+        padding: 0.5rem;
+        border: 1px solid #cbd5e0;
+        border-radius: 0.5rem;
+        background-color: #f7fafc;
+      }
+      .message-box {
+        background-color: #fff3cd; /* Light yellow for info/warning */
+        border: 1px solid #ffeeba;
+        color: #856404;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        margin-top: 1rem;
+        word-wrap: break-word; /* Ensure long text wraps */
+      }
+      .error-box {
+        background-color: #f8d7da; /* Light red for errors */
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="bg-white rounded-2xl shadow-lg p-10 max-w-8xl w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <h1
+        class="col-span-full mb-4 text-3xl font-bold text-center text-gray-800"
+      >
+        Image Steganography
+      </h1>
+      <div class="w-full flex flex-col gap-4">
+        <h2 class="text-xl font-semibold text-gray-700">
+          1. Prepare Image & Message
+        </h2>
+
+        <div id="imageUpload" class="flex items-center justify-center w-full">
+          <label for="dropzone-file" id="fileInputHolder" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+              <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+              </svg>
+              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+            </div>
+          </label>
+        </div> 
+
+        <label for="messageInput" class="block font-medium text-gray-600"
+          >Message to Embed:</label
+        >
+        <textarea
+          id="messageInput"
+          placeholder="Enter your secret message here..."
+          maxlength="255"
+          class="w-full p-2"
+        ></textarea>
+
+        <div>
+          <button id="encode" class="btn btn-primary">Embed Message</button>
+          <button id="downloadBtn" class="hidden btn btn-secondary">
+            Download Image
+          </button>
+        </div>
+      </div>
+
+      <div class="w-full flex flex-col gap-4">
+        <h2 class="text-xl font-semibold text-gray-700">2. View & Extract</h2>
+        <div id="canvas-holder" class="w-full h-full"></div>
+        <button id="decode" class="w-fit btn btn-primary">Extract Message</button>
+        <div id="extractedMessageOutput" class="message-box hidden"></div>
+        <div id="statusMessage" class="hidden error-box"></div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Frame Rate Comparison — Bouncing Ball</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --panel: #1a1d29;
+    --accent: #5b8cff;
+    --text: #e6e9f0;
+    --muted: #8b91a7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  p.sub { color: var(--muted); margin: 0 0 20px; font-size: 0.9rem; }
+
+  .controls {
+    background: var(--panel);
+    border-radius: 12px;
+    padding: 20px 24px;
+    width: 100%;
+    max-width: 640px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  .row { display: flex; align-items: center; gap: 16px; }
+  .fps-label {
+    font-variant-numeric: tabular-nums;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 110px;
+  }
+  .fps-label span { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+  input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent);
+    height: 6px;
+  }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .presets { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .presets button {
+    background: #262a3a;
+    color: var(--text);
+    border: 1px solid #343a4f;
+    border-radius: 8px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.15s;
+  }
+  .presets button:hover { background: #323750; }
+  .presets button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  canvas {
+    background: #07090f;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 640px;
+    display: block;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  .hint { color: var(--muted); font-size: 0.8rem; margin-top: 14px; max-width: 640px; text-align: center; }
+</style>
+</head>
+<body>
+  <h1>Frame Rate Comparison</h1>
+  <p class="sub">Drag the slider to throttle the bouncing ball's update rate and feel the difference.</p>
+
+  <div class="controls">
+    <div class="row">
+      <div class="fps-label" id="fpsLabel">60 <span>target fps</span></div>
+      <input type="range" id="fpsSlider" min="1" max="144" value="60" />
+    </div>
+    <div class="presets" id="presets">
+      <button data-fps="5">5</button>
+      <button data-fps="12">12</button>
+      <button data-fps="24">24</button>
+      <button data-fps="30">30</button>
+      <button data-fps="60" class="active">60</button>
+      <button data-fps="120">120</button>
+      <button data-fps="144">144</button>
+    </div>
+    <div class="meta">
+      <span>Actual: <b id="actualFps">–</b> fps</span>
+      <span>Frame budget: <b id="budget">16.7</b> ms</span>
+      <span>Display max: <b id="displayMax">~</b> fps</span>
+    </div>
+  </div>
+
+  <canvas id="canvas" width="640" height="360"></canvas>
+  <p class="hint">The ball moves the same speed in real time at any setting — only the smoothness changes. Lower fps = choppier motion. Your monitor caps the maximum you can perceive.</p>
+
+<script>
+(function () {
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  const slider = document.getElementById('fpsSlider');
+  const fpsLabel = document.getElementById('fpsLabel');
+  const actualFpsEl = document.getElementById('actualFps');
+  const budgetEl = document.getElementById('budget');
+  const presetsEl = document.getElementById('presets');
+
+  const W = canvas.width, H = canvas.height, R = 18;
+  const GRAVITY = 1600;          // px/s² downward
+  const apexY = R;               // highest point (top of canvas)
+  const floorY = H - R;          // resting point on the ground
+  // Speed at the floor needed to rise exactly back to the apex (energy conserved, no damping)
+  const bounceSpeed = Math.sqrt(2 * GRAVITY * (floorY - apexY));
+
+  // Position in pixels, velocity in px/SECOND (real-world motion is fps-independent)
+  let x = W / 2, y = apexY;      // dropped from the top, centered
+  let vy = 0;                    // no horizontal velocity
+
+  let targetFps = 60;
+  let lastDraw = 0;        // timestamp of last rendered frame
+  let lastPhysics = 0;     // timestamp of last physics integration
+
+  // Actual fps measurement
+  let frameCount = 0, fpsTimer = 0;
+
+  function setFps(v) {
+    targetFps = v;
+    fpsLabel.innerHTML = v + ' <span>target fps</span>';
+    slider.value = v;
+    budgetEl.textContent = (1000 / v).toFixed(1);
+    [...presetsEl.children].forEach(b =>
+      b.classList.toggle('active', Number(b.dataset.fps) === v));
+  }
+
+  slider.addEventListener('input', () => setFps(Number(slider.value)));
+  presetsEl.addEventListener('click', e => {
+    if (e.target.dataset.fps) setFps(Number(e.target.dataset.fps));
+  });
+
+  function physics(dt) {
+    vy += GRAVITY * dt;
+    y += vy * dt;
+    if (y > floorY) {
+      // Reflect off the floor and reset speed to the conserved value
+      // (no damping → always returns to the same apex, frame rate aside)
+      y = floorY;
+      vy = -bounceSpeed;
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // motion trail grid for reference
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    for (let gx = 0; gx <= W; gx += 40) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
+    for (let gy = 0; gy <= H; gy += 40) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
+
+    const grad = ctx.createRadialGradient(x - 6, y - 6, 2, x, y, R);
+    grad.addColorStop(0, '#a9c1ff');
+    grad.addColorStop(1, '#5b8cff');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(x, y, R, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function loop(now) {
+    requestAnimationFrame(loop);
+    if (!lastPhysics) { lastPhysics = lastDraw = fpsTimer = now; }
+
+    const interval = 1000 / targetFps;
+    if (now - lastDraw >= interval) {
+      // advance physics by the real elapsed time so speed stays constant
+      const dt = (now - lastPhysics) / 1000;
+      lastPhysics = now;
+      physics(dt);
+      draw();
+
+      // align to the target cadence without drifting
+      lastDraw += interval;
+      if (now - lastDraw > interval) lastDraw = now;
+
+      frameCount++;
+    }
+
+    if (now - fpsTimer >= 500) {
+      actualFpsEl.textContent = Math.round(frameCount * 1000 / (now - fpsTimer));
+      frameCount = 0;
+      fpsTimer = now;
+    }
+  }
+
+  // Estimate the display's max refresh rate
+  (function detectRefresh() {
+    let n = 0, t0 = performance.now();
+    function probe(t) {
+      if (++n < 60) return requestAnimationFrame(probe);
+      const hz = Math.round(n * 1000 / (t - t0));
+      document.getElementById('displayMax').textContent = '~' + hz;
+    }
+    requestAnimationFrame(probe);
+  })();
+
+  setFps(60);
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

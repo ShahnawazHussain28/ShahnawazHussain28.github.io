@@ -1,5 +1,12 @@
 [
   {
+    "name": "Frame Rate Comparison",
+    "description": "Feel the difference between frame rates with a gravity-bouncing ball and an adjustable fps slider.",
+    "link": "refreshrate",
+    "thumbLink": "thumbnails/refreshrate.jpg",
+    "tech": ["HTML", "CSS", "JS"]
+  },
+  {
     "name": "Web Steganography",
     "description": "Hide and reveal secret messages inside images with optional password protection.",
     "link": "steganography",

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Diwali!</title>
+  <meta property="og:title" content="A Diwali fireworks show, just for you">
+  <meta property="og:description" content="Open it and watch the sky.">
+  <script src="p5.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+    }
+    canvas {
+      display: block;
+    }
+    #share {
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      width: min(560px, calc(100% - 32px));
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 14px;
+      background: rgba(20, 12, 0, 0.6);
+      border: 1px solid rgba(255, 190, 80, 0.35);
+      backdrop-filter: blur(6px);
+    }
+    #share input {
+      flex: 1 1 160px;
+      min-width: 0;
+      padding: 10px 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 190, 80, 0.5);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+    }
+    #share button {
+      padding: 10px 14px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #ffb347;
+      color: #2a1600;
+    }
+    #share button.ghost {
+      background: transparent;
+      color: #ffd59a;
+      border: 1px solid rgba(255, 190, 80, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <form id="share">
+    <input id="who" maxlength="16" placeholder="Friend's name"
+      aria-label="Friend's name" autocomplete="off">
+    <button type="submit">Send on WhatsApp</button>
+    <button type="button" class="ghost" id="copy">Copy link</button>
+  </form>
+  <script src="sketch.js"></script>
+  <script src="share.js"></script>
+</body>
+</html>

@@ -19,6 +19,9 @@ let textPoints = [];
 let friend = "";
 
 function setup() {
+  // Phones and laptops can have 2-3x the pixels.
+  // Fireworks don't need them, so draw just 1x.
+  pixelDensity(1);
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB, 360, 100, 100, 1);
   strokeCap(ROUND);

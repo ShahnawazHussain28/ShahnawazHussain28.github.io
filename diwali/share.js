@@ -2,6 +2,28 @@
 const form = document.getElementById("share");
 const who = document.getElementById("who");
 const copyButton = document.getElementById("copy");
+const wishButton = document.getElementById("wish");
+const closeButton = document.getElementById("close");
+
+// The wish button opens the name box, ✕ closes it
+function openBox() {
+  wishButton.hidden = true;
+  form.hidden = false;
+  who.focus();
+}
+
+function closeBox() {
+  form.hidden = true;
+  wishButton.hidden = false;
+}
+
+wishButton.addEventListener("click", openBox);
+closeButton.addEventListener("click", closeBox);
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeBox();
+  }
+});
 
 function greetingLink() {
   const url = new URL(location.href);
